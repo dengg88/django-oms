@@ -14,7 +14,7 @@
 
 [文档查看](https://itimor.github.io/django-oms/)
 
-[线上demo](http://oms.itimor.cf/)
+[线上demo](http://oms.itimor.cf/)  ### 地址已经失效
 
 ```
 用户名：admin
