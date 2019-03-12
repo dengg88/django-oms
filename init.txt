@@ -30,35 +30,13 @@ export NVM_DIR="$HOME/.nvm"
 nvm install 8.9.1
 nvm use 8.9.1
 
-4.安装数据库(postgresql)
-yum install -y https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-7-x86_64/pgdg-centos95-9.5-2.noarch.rpm
-yum install-y postgresql95-server postgresql95-contrib
-/usr/pgsql-9.5/bin/postgresql95-setup initdb
-systemctl enable postgresql-9.5.service
-systemctl start postgresql-9.5.service
-su - postgres
-```
-ALTER USER postgres WITH PASSWORD 'abc123';
-CREATE USER oms WITH PASSWORD '123456';
-CREATE DATABASE oms OWNER oms;
-GRANT ALL PRIVILEGES ON DATABASE oms to oms;
-```
-#修改配置
-vi /var/lib/pgsql/9.5/data/postgresql.conf
-修改#listen_addresses = 'localhost'  为  listen_addresses='*'
-
-vi /var/lib/pgsql/9.5/data/pg_hba.conf
-修改如下内容，信任指定服务器连接
-# IPv4 local connections:
-host    all            all      127.0.0.1/32      trust
-host    all            all      10.211.55.6/32（需要连接的服务器IP）  trust
-
-systemctl restart postgresql-9.5.service
+4.安装数据库(mysql)
+初学建议用django自带的sqlite
 
 5.拉取代码
 mkdir -p /data/projects/
 cd !$
-git clone git@bitbucket.org:larrytblucky/oms.git
+git clone https://github.com/itimor/django-oms.git
 
 #django
 cd oms/omsBackend

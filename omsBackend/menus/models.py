@@ -22,7 +22,7 @@ class Firstmenu(models.Model):
 
 
 class Secondmenu(models.Model):
-    parent = models.ForeignKey("Firstmenu", verbose_name=u'上级菜单')
+    parent = models.ForeignKey("Firstmenu", on_delete=models.SET_NULL, null=True, blank=True, verbose_name=u'上级菜单')
     title = models.CharField(max_length=100, blank=True, unique=True, verbose_name=u'菜单中文')
     name = models.CharField(max_length=100, blank=True, unique=True, verbose_name=u'菜单名')
     path = models.CharField(max_length=100, blank=True, verbose_name=u'菜单实际路径')
@@ -38,7 +38,7 @@ class Secondmenu(models.Model):
 
 
 class Element(models.Model):
-    parent = models.ForeignKey("Secondmenu", verbose_name=u'所属菜单')
+    parent = models.ForeignKey("Secondmenu", on_delete=models.SET_NULL, null=True, blank=True, verbose_name=u'所属菜单')
     name = models.CharField(max_length=100, blank=True, verbose_name=u'菜单元素')
     code = models.CharField(max_length=100, blank=True, verbose_name=u'元素code')
 

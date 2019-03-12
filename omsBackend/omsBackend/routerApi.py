@@ -38,16 +38,16 @@ router.register(r'usermenuperms', UserMenuPermsViewSet)
 router.register(r'userhostperms', UserHostPermsViewSet)
 router.register(r'userwikiperms', UserWikiPermsViewSet)
 
-from threepay.views import (PlatformViewSet, MerchantViewSet, ThreePayEnclosureViewSet, PayChannelViewSet,
-                            PayChannelNameViewSet, ThreePayCommentViewSet, PlatformPayChannelViewSet)
-
-router.register(r'platforms', PlatformViewSet)
-router.register(r'merchants', MerchantViewSet)
-router.register(r'threepayenclosures', ThreePayEnclosureViewSet)
-router.register(r'paychannels', PayChannelViewSet)
-router.register(r'paychannelnames', PayChannelNameViewSet)
-router.register(r'threepaycomments', ThreePayCommentViewSet)
-router.register(r'platformpaychannels', PlatformPayChannelViewSet)
+# from threepay.views import (PlatformViewSet, MerchantViewSet, ThreePayEnclosureViewSet, PayChannelViewSet,
+#                             PayChannelNameViewSet, ThreePayCommentViewSet, PlatformPayChannelViewSet)
+#
+# router.register(r'platforms', PlatformViewSet)
+# router.register(r'merchants', MerchantViewSet)
+# router.register(r'threepayenclosures', ThreePayEnclosureViewSet)
+# router.register(r'paychannels', PayChannelViewSet)
+# router.register(r'paychannelnames', PayChannelNameViewSet)
+# router.register(r'threepaycomments', ThreePayCommentViewSet)
+# router.register(r'platformpaychannels', PlatformPayChannelViewSet)
 
 from wikis.views import WikiViewSet, OpsWikiViewSet
 
@@ -76,24 +76,24 @@ from records.views import RecordViewSet
 
 router.register(r'records', RecordViewSet)
 
-from projects.views import ProjectViewSet, ProjectCommentViewSet, ProjectEnclosureViewSet, ProjectTypeViewSet, \
-    BugManagerViewSet, TestManagerViewSet, DemandManagerViewSet, DemandEnclosureViewSet, ProjectCompleteViewSet
-
-router.register(r'projects', ProjectViewSet)
-router.register(r'projectcompletes', ProjectCompleteViewSet)
-router.register(r'projectcomments', ProjectCommentViewSet)
-router.register(r'projectenclosures', ProjectEnclosureViewSet)
-router.register(r'projecttypes', ProjectTypeViewSet)
-router.register(r'bugmanagers', BugManagerViewSet)
-router.register(r'testmanagers', TestManagerViewSet)
-router.register(r'demandmanagers', DemandManagerViewSet)
-router.register(r'demandenclosures', DemandEnclosureViewSet)
-
-from optasks.views import OpsProjectViewSet, OpsDemandManagerViewSet, ProjectCommentViewSet
-
-router.register(r'opsprojects', OpsProjectViewSet)
-router.register(r'opsdemandmanagers', OpsDemandManagerViewSet)
-router.register(r'opsprojectcomments', ProjectCommentViewSet)
+# from projects.views import ProjectViewSet, ProjectCommentViewSet, ProjectEnclosureViewSet, ProjectTypeViewSet, \
+#     BugManagerViewSet, TestManagerViewSet, DemandManagerViewSet, DemandEnclosureViewSet, ProjectCompleteViewSet
+#
+# router.register(r'projects', ProjectViewSet)
+# router.register(r'projectcompletes', ProjectCompleteViewSet)
+# router.register(r'projectcomments', ProjectCommentViewSet)
+# router.register(r'projectenclosures', ProjectEnclosureViewSet)
+# router.register(r'projecttypes', ProjectTypeViewSet)
+# router.register(r'bugmanagers', BugManagerViewSet)
+# router.register(r'testmanagers', TestManagerViewSet)
+# router.register(r'demandmanagers', DemandManagerViewSet)
+# router.register(r'demandenclosures', DemandEnclosureViewSet)
+#
+# from optasks.views import OpsProjectViewSet, OpsDemandManagerViewSet, ProjectCommentViewSet
+#
+# router.register(r'opsprojects', OpsProjectViewSet)
+# router.register(r'opsdemandmanagers', OpsDemandManagerViewSet)
+# router.register(r'opsprojectcomments', ProjectCommentViewSet)
 
 from dnsmanager.views import DnsApiKeyViewSet, DnsDomainViewSet, DnsRecordViewSet, DnspodDomainViewSet, \
     DnspodRecordViewSet, GodaddyDomainViewSet, GodaddyRecordViewSet, BindDomainViewSet, BindRecordViewSet

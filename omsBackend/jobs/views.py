@@ -6,8 +6,8 @@ from jobs.models import Jobs, Deployenv, Deploycmd, DeployJobs, DeployTicket, De
 from jobs.serializers import (JobsSerializer, DeployenvSerializer, DeploycmdSerializer, DeployJobsSerializer,
                               DeployTicketSerializer, DeployTicketEnclosureSerializer, SqlTicketSerializer, DeployResultsSerializer)
 from omsBackend.settings import sapi
-from jobs.filters import JobFilterBackend, SqlTicketFilterBackend
-from rest_framework.filters import SearchFilter, DjangoFilterBackend
+# from jobs.filters import JobFilterBackend, SqlTicketFilterBackend
+# from rest_framework.filters import SearchFilter, DjangoFilterBackend
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import json
@@ -16,7 +16,7 @@ import json
 class JobsViewSet(viewsets.ModelViewSet):
     queryset = Jobs.objects.all().order_by('id')
     serializer_class = JobsSerializer
-    filter_backends = (JobFilterBackend, SearchFilter, DjangoFilterBackend)
+    # filter_backends = (JobFilterBackend, SearchFilter, DjangoFilterBackend)
     filter_fields = ['showdev']
     search_fields = ['name', 'code_url']
 
@@ -60,7 +60,7 @@ class DeployTicketEnclosureViewSet(viewsets.ModelViewSet):
 class SqlTicketTicketViewSet(viewsets.ModelViewSet):
     queryset = SqlTicket.objects.all().order_by('-create_time')
     serializer_class = SqlTicketSerializer
-    filter_backends = (SqlTicketFilterBackend, SearchFilter, DjangoFilterBackend)
+    # filter_backends = (SqlTicketFilterBackend, SearchFilter, DjangoFilterBackend)
     search_fields = ['name']
 
 

@@ -73,7 +73,7 @@ class Jobs(models.Model):
 
 
 class Deployenv(models.Model):
-    job = models.ForeignKey(Jobs, verbose_name=u'发布任务')
+    job = models.ForeignKey(Jobs, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=u'发布任务')
     name = models.CharField(max_length=50, verbose_name=u'名称')
     level = models.IntegerField(default=1, verbose_name=u'顺序')
     deploy_hosts = models.ManyToManyField(Host, null=True, blank=True, verbose_name=u'发布主机')
@@ -91,7 +91,7 @@ class Deployenv(models.Model):
 
 
 class Deploycmd(models.Model):
-    env = models.ForeignKey(Deployenv, verbose_name=u'发布环境')
+    env = models.ForeignKey(Deployenv, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=u'发布环境')
     name = models.CharField(max_length=20, verbose_name=u'名称')
     deploy_cmd = models.TextField(null=True, blank=True, verbose_name=u'发布命令')
 
@@ -104,7 +104,7 @@ class Deploycmd(models.Model):
 
 
 class DeployJobs(models.Model):
-    job = models.ForeignKey(Jobs, verbose_name=u'发布任务', related_name='deploy_job')
+    job = models.ForeignKey(Jobs, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=u'发布任务', related_name='deploy_job')
     j_id = models.CharField(max_length=100, null=True, blank=True, verbose_name=u'任务ID')
     deploy_status = models.CharField(choices=DEPLOY_STATUS.items(), default="deploy", max_length=10,
                                      verbose_name=u'发布状态')
@@ -115,7 +115,7 @@ class DeployJobs(models.Model):
     version = models.CharField(max_length=20, default='HEAD', verbose_name=u'版本号')
     content = models.TextField(verbose_name=u'更新内容')
     deploy_cmd = models.TextField(verbose_name=u'发布命令')
-    action_user = models.ForeignKey(User, verbose_name=u'操作人')
+    action_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=u'操作人')
     create_time = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
 
     def __str__(self):
@@ -127,7 +127,7 @@ class DeployJobs(models.Model):
 
 
 class DeployResults(models.Model):
-    deployjob = models.ForeignKey(DeployJobs, verbose_name=u'发布任务', related_name='deployjob')
+    deployjob = models.ForeignKey(DeployJobs, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=u'发布任务', related_name='deployjob')
     result = models.TextField(null=True, blank=True, verbose_name=u'发布结果')
 
     class Meta:
@@ -148,7 +148,7 @@ class DeployTicket(models.Model):
     version = models.TextField(default='HEAD', verbose_name=u'项目版本')
     content = models.TextField(verbose_name=u'上线内容')
     desc = models.TextField(null=True, blank=True, verbose_name=u'发布说明')
-    create_user = models.ForeignKey(User, related_name='deployticket_create_user', verbose_name=u'创建者')
+    create_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='deployticket_create_user', verbose_name=u'创建者')
     status = models.CharField(max_length=3, choices=Status.items(), default=0, verbose_name=u'状态')
     skype_to = models.CharField(max_length=100, null=True, blank=True, verbose_name=u'通知人')
     create_time = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
@@ -162,9 +162,9 @@ class DeployTicket(models.Model):
 
 
 class DeployTicketEnclosure(models.Model):
-    ticket = models.ForeignKey(DeployTicket, verbose_name=u'工单')
-    file = models.ForeignKey(Upload, verbose_name=u'附件')
-    create_user = models.ForeignKey(User, verbose_name=u'附件上传人')
+    ticket = models.ForeignKey(DeployTicket, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=u'工单')
+    file = models.ForeignKey(Upload, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=u'附件')
+    create_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=u'附件上传人')
     create_time = models.DateTimeField(auto_now_add=True, verbose_name=u'附件上传时间')
 
     class Meta:
@@ -184,8 +184,8 @@ class SqlTicket(models.Model):
     content = models.TextField(verbose_name=u'sql语句')
     desc = models.TextField(verbose_name=u'说明')
     status = models.CharField(max_length=3, choices=SqlStatus.items(), default=0, verbose_name=u'状态')
-    create_user = models.ForeignKey(User, related_name='sqlticket_create_user', verbose_name=u'创建者')
-    action_user = models.ForeignKey(User, null=True, blank=True, related_name='sqlticket_action_user', verbose_name=u'执行者')
+    create_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='sqlticket_create_user', verbose_name=u'创建者')
+    action_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='sqlticket_action_user', verbose_name=u'执行者')
     env = models.CharField(max_length=100, null=True, blank=True, verbose_name=u'执行环境')
     create_time = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
 
