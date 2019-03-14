@@ -3,59 +3,55 @@ import Cookies from 'js-cookie'
 const app = {
   state: {
     sidebar: {
-      opened: !+Cookies.get('sidebarStatus')
+      opened: Cookies.get('sidebarStatus') ? !!+Cookies.get('sidebarStatus') : true,
+      withoutAnimation: false
     },
-    visitedViews: [],
-    cachedViews: []
+    device: 'desktop',
+    language: Cookies.get('language') || 'en',
+    size: Cookies.get('size') || 'medium'
   },
   mutations: {
     TOGGLE_SIDEBAR: state => {
+      state.sidebar.opened = !state.sidebar.opened
+      state.sidebar.withoutAnimation = false
       if (state.sidebar.opened) {
         Cookies.set('sidebarStatus', 1)
       } else {
         Cookies.set('sidebarStatus', 0)
       }
-      state.sidebar.opened = !state.sidebar.opened
     },
-    ADD_VISITED_VIEWS: (state, view) => {
-      if (state.visitedViews.some(v => v.path === view.path)) return
-
-      state.visitedViews.push({
-        name: view.name,
-        path: view.path
-      })
-      if (!view.meta.noCache) {
-        state.cachedViews.push(view.name)
-      }
+    CLOSE_SIDEBAR: (state, withoutAnimation) => {
+      Cookies.set('sidebarStatus', 0)
+      state.sidebar.opened = false
+      state.sidebar.withoutAnimation = withoutAnimation
     },
-    DEL_VISITED_VIEWS: (state, view) => {
-      for (const [i, v] of state.visitedViews.entries()) {
-        if (v.path === view.path) {
-          state.visitedViews.splice(i, 1)
-          break
-        }
-      }
-      for (const i of state.cachedViews) {
-        if (i === view.name) {
-          const index = state.cachedViews.indexOf(i)
-          state.cachedViews.splice(index, 1)
-          break
-        }
-      }
+    TOGGLE_DEVICE: (state, device) => {
+      state.device = device
+    },
+    SET_LANGUAGE: (state, language) => {
+      state.language = language
+      Cookies.set('language', language)
+    },
+    SET_SIZE: (state, size) => {
+      state.size = size
+      Cookies.set('size', size)
     }
   },
   actions: {
     toggleSideBar({ commit }) {
       commit('TOGGLE_SIDEBAR')
     },
-    addVisitedViews({ commit }, view) {
-      commit('ADD_VISITED_VIEWS', view)
+    closeSideBar({ commit }, { withoutAnimation }) {
+      commit('CLOSE_SIDEBAR', withoutAnimation)
     },
-    delVisitedViews({ commit, state }, view) {
-      return new Promise((resolve) => {
-        commit('DEL_VISITED_VIEWS', view)
-        resolve([...state.visitedViews])
-      })
+    toggleDevice({ commit }, device) {
+      commit('TOGGLE_DEVICE', device)
+    },
+    setLanguage({ commit }, language) {
+      commit('SET_LANGUAGE', language)
+    },
+    setSize({ commit }, size) {
+      commit('SET_SIZE', size)
     }
   }
 }

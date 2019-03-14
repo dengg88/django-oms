@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-import { getWiki } from 'api/wiki'
+import { getWiki } from '@/api/wiki'
 import VueMarkdown from 'vue-markdown' // 前端显示
 
 export default {

@@ -163,7 +163,7 @@ import {
   putDeploycmd,
   deleteDeploycmd
 } from '@/api/job'
-import sesectHosts from 'views/components/hosttransfer.vue'
+import sesectHosts from '@/views/components/hosttransfer.vue'
 
 export default {
   components: { sesectHosts },

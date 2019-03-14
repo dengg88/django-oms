@@ -41,8 +41,8 @@
 </template>
 <script>
 import { postDeployTicket, postDeployTicketEnclosur } from '@/api/job'
-import { postUpload, postSendmessage } from 'api/tool'
-import { getUser } from 'api/user'
+import { postUpload, postSendmessage } from '@/api/tool'
+import { getUser } from '@/api/user'
 import { getConversionTime } from '@/utils'
 import { uploadurl } from '@/config'
 

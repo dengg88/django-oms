@@ -35,7 +35,7 @@ class User(AbstractBaseUser):
     username = models.CharField(max_length=32, unique=True, db_index=True)
     email = models.EmailField(max_length=255, null=True, blank=True)
     skype = models.CharField(max_length=255, null=True, blank=True)
-    groups = models.ManyToManyField('Group', null=True, blank=True, verbose_name=u'部门')
+    groups = models.ManyToManyField('Group', blank=True, verbose_name=u'部门')
     create_date = models.DateField(auto_now=True, verbose_name=u'创建时间')
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)

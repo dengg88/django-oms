@@ -17,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         groups = validated_data.pop('groups')
         user = User.objects.create(**validated_data)
-        user.groups = groups
+        user.groups.set(groups)
         try:
             user.set_password(validated_data['password'])
         except:
@@ -36,7 +36,7 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(validated_data['password'])
         except Exception as e:
             pass
-        instance.groups = groups
+        instance.groups.set(groups)
         instance.save()
         return instance
 

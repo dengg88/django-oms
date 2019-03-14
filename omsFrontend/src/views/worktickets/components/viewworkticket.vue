@@ -33,9 +33,6 @@
               <el-button v-if="role==='super'&&ticketData.ticket_status===0" type="success" size="small"
                          @click="changeStatus">接收
               </el-button>
-              <router-link v-if="workticketlist_btn_edit||role==='super'" :to="'/worktickets/copyworkticket/' + pid">
-                <el-button type="primary" size="small">乾坤大挪移</el-button>
-              </router-link>
               <div class="action">
                 <el-radio-group v-model="radio_status">
                   <el-radio label="0">不操作</el-radio>
@@ -140,11 +137,11 @@ import {
   postTicketenclosure,
   getTicketenclosure,
   deleteTicketenclosure
-} from 'api/workticket'
-import { postUpload, postSendmessage } from 'api/tool'
+} from '@/api/workticket'
+import { postUpload, postSendmessage } from '@/api/tool'
 import { apiUrl, uploadurl } from '@/config'
 import VueMarkdown from 'vue-markdown' // 前端解析markdown
-import { getUser } from 'api/user'
+import { getUser } from '@/api/user'
 import { mapGetters } from 'vuex'
 import { getConversionTime } from '@/utils'
 

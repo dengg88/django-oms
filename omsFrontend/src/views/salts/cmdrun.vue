@@ -29,7 +29,7 @@
 </template>
 <script>
 import sesectHosts from '../components/hosttransfer.vue'
-import { getCmdrun, getSaltResult } from 'api/salt'
+import { getCmdrun, getSaltResult } from '@/api/salt'
 
 export default {
   components: { sesectHosts },

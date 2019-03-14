@@ -48,7 +48,7 @@ import {
   postDeployTicketEnclosur,
   deleteDeployTicketEnclosur
 } from '@/api/job'
-import { postUpload } from 'api/tool'
+import { postUpload } from '@/api/tool'
 import { apiUrl, uploadurl } from '@/config'
 import { getConversionTime } from '@/utils'
 

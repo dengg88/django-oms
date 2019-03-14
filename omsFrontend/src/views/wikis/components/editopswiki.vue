@@ -19,8 +19,8 @@
 </template>
 <script>
 import { getConversionTime } from '@/utils'
-import { postUpload } from 'api/tool'
-import { getOpsWiki, putOpsWiki } from 'api/wiki'
+import { postUpload } from '@/api/tool'
+import { getOpsWiki, putOpsWiki } from '@/api/wiki'
 
 export default {
   data() {

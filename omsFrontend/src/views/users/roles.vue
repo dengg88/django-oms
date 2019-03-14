@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { getRole, postRole, deleteRole } from 'api/user'
+import { getRole, postRole, deleteRole } from '@/api/user'
 import { LIMIT, pagesize, pageformat } from '@/config'
 
 export default {

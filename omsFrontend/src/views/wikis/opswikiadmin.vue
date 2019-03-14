@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { getOpsWiki, deleteOpsWiki } from 'api/wiki'
+import { getOpsWiki, deleteOpsWiki } from '@/api/wiki'
 import { LIMIT, pagesize, pageformat } from '@/config'
 
 export default {

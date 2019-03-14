@@ -29,7 +29,7 @@
   </el-form>
 </template>
 <script>
-import { postUser, getGroup, getRole } from 'api/user'
+import { postUser, getGroup, getRole } from '@/api/user'
 
 export default {
   components: {},

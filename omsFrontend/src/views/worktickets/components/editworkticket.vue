@@ -65,9 +65,9 @@ import {
   getTicketenclosure,
   deleteTicketenclosure,
   getTickettype
-} from 'api/workticket'
-import { postUpload } from 'api/tool'
-import { getUser } from 'api/user'
+} from '@/api/workticket'
+import { postUpload } from '@/api/tool'
+import { getUser } from '@/api/user'
 import { uploadurl, apiurl } from '@/config'
 import { getConversionTime } from '@/utils'
 

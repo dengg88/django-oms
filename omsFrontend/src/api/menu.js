@@ -1,10 +1,10 @@
 import request from '@/utils/request'
-import apiURL from '@/config'
+import { apiuri } from '@/config'
 
 // firstmenus
 export function postFirstmenus(data) {
   return request({
-    url: apiURL.firstmenus,
+    url: apiuri.firstmenus,
     method: 'post',
     data
   })
@@ -12,7 +12,7 @@ export function postFirstmenus(data) {
 
 export function getFirstmenus(query, id) {
   return request({
-    url: id ? apiURL.firstmenus + id + '/' : apiURL.firstmenus,
+    url: id ? apiuri.firstmenus + id + '/' : apiuri.firstmenus,
     method: 'get',
     params: query
   })
@@ -20,7 +20,7 @@ export function getFirstmenus(query, id) {
 
 export function putFirstmenus(id, data) {
   return request({
-    url: apiURL.firstmenus + id + '/',
+    url: apiuri.firstmenus + id + '/',
     method: 'put',
     data
   })
@@ -28,7 +28,7 @@ export function putFirstmenus(id, data) {
 
 export function deleteFirstmenus(id) {
   return request({
-    url: apiURL.firstmenus + id + '/',
+    url: apiuri.firstmenus + id + '/',
     method: 'delete'
   })
 }
@@ -36,7 +36,7 @@ export function deleteFirstmenus(id) {
 // secondmenus
 export function postSecondmenus(data) {
   return request({
-    url: apiURL.secondmenus,
+    url: apiuri.secondmenus,
     method: 'post',
     data
   })
@@ -44,7 +44,7 @@ export function postSecondmenus(data) {
 
 export function getSecondmenus(query, id) {
   return request({
-    url: id ? apiURL.secondmenus + id + '/' : apiURL.secondmenus,
+    url: id ? apiuri.secondmenus + id + '/' : apiuri.secondmenus,
     method: 'get',
     params: query
   })
@@ -52,7 +52,7 @@ export function getSecondmenus(query, id) {
 
 export function putSecondmenus(id, data) {
   return request({
-    url: apiURL.secondmenus + id + '/',
+    url: apiuri.secondmenus + id + '/',
     method: 'put',
     data
   })
@@ -60,7 +60,7 @@ export function putSecondmenus(id, data) {
 
 export function deleteSecondmenus(id) {
   return request({
-    url: apiURL.secondmenus + id + '/',
+    url: apiuri.secondmenus + id + '/',
     method: 'delete'
   })
 }
@@ -69,7 +69,7 @@ export function deleteSecondmenus(id) {
 export function postMenumetas(data) {
   console.log(data)
   return request({
-    url: apiURL.menumetas,
+    url: apiuri.menumetas,
     method: 'post',
     data
   })
@@ -77,7 +77,7 @@ export function postMenumetas(data) {
 
 export function getMenumetas(query, id) {
   return request({
-    url: id ? apiURL.menumetas + id + '/' : apiURL.menumetas,
+    url: id ? apiuri.menumetas + id + '/' : apiuri.menumetas,
     method: 'get',
     params: query
   })
@@ -85,7 +85,7 @@ export function getMenumetas(query, id) {
 
 export function putMenumetas(id, data) {
   return request({
-    url: apiURL.menumetas + id + '/',
+    url: apiuri.menumetas + id + '/',
     method: 'put',
     data
   })
@@ -93,7 +93,7 @@ export function putMenumetas(id, data) {
 
 export function deleteMenumetas(id) {
   return request({
-    url: apiURL.menumetas + id + '/',
+    url: apiuri.menumetas + id + '/',
     method: 'delete'
   })
 }

@@ -1,10 +1,10 @@
 import request from '@/utils/request'
-import apiURL from '@/config'
+import { apiuri } from '@/config'
 
 // usermenuperms
 export function postMenuPerm(data) {
   return request({
-    url: apiURL.usermenuperms,
+    url: apiuri.usermenuperms,
     method: 'post',
     data
   })
@@ -12,7 +12,7 @@ export function postMenuPerm(data) {
 
 export function getMenuPerm(query, id) {
   return request({
-    url: apiURL.usermenuperms,
+    url: apiuri.usermenuperms,
     method: 'get',
     params: query
   })
@@ -20,7 +20,7 @@ export function getMenuPerm(query, id) {
 
 export function putMenuPerm(id, data) {
   return request({
-    url: apiURL.usermenuperms + id + '/',
+    url: apiuri.usermenuperms + id + '/',
     method: 'put',
     data
   })
@@ -28,23 +28,15 @@ export function putMenuPerm(id, data) {
 
 export function deleteMenuPerm(id) {
   return request({
-    url: apiURL.usermenuperms + id + '/',
+    url: apiuri.usermenuperms + id + '/',
     method: 'delete'
-  })
-}
-
-// router
-export function getRouterInfo(username) {
-  return request({
-    url: apiURL.routerinfo + username,
-    method: 'get'
   })
 }
 
 // userhostperms
 export function postHostPerm(data) {
   return request({
-    url: apiURL.userhostperms,
+    url: apiuri.userhostperms,
     method: 'post',
     data
   })
@@ -52,7 +44,7 @@ export function postHostPerm(data) {
 
 export function getHostPerm(query, id) {
   return request({
-    url: apiURL.userhostperms,
+    url: apiuri.userhostperms,
     method: 'get',
     params: query
   })
@@ -60,7 +52,7 @@ export function getHostPerm(query, id) {
 
 export function putHostPerm(id, data) {
   return request({
-    url: apiURL.userhostperms + id + '/',
+    url: apiuri.userhostperms + id + '/',
     method: 'put',
     data
   })
@@ -68,7 +60,7 @@ export function putHostPerm(id, data) {
 
 export function deleteHostPerm(id) {
   return request({
-    url: apiURL.userhostperms + id + '/',
+    url: apiuri.userhostperms + id + '/',
     method: 'delete'
   })
 }
@@ -76,7 +68,7 @@ export function deleteHostPerm(id) {
 // userwikiperms
 export function postWikiPerm(data) {
   return request({
-    url: apiURL.userwikiperms,
+    url: apiuri.userwikiperms,
     method: 'post',
     data
   })
@@ -84,7 +76,7 @@ export function postWikiPerm(data) {
 
 export function getWikiPerm(query, id) {
   return request({
-    url: apiURL.userwikiperms,
+    url: apiuri.userwikiperms,
     method: 'get',
     params: query
   })
@@ -92,7 +84,7 @@ export function getWikiPerm(query, id) {
 
 export function putWikiPerm(id, data) {
   return request({
-    url: apiURL.userwikiperms + id + '/',
+    url: apiuri.userwikiperms + id + '/',
     method: 'put',
     data
   })
@@ -100,7 +92,7 @@ export function putWikiPerm(id, data) {
 
 export function deleteWikiPerm(id) {
   return request({
-    url: apiURL.userwikiperms + id + '/',
+    url: apiuri.userwikiperms + id + '/',
     method: 'delete'
   })
 }

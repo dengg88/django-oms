@@ -107,7 +107,7 @@
   </div>
 </template>
 <script>
-import { getStatesStatusBygroup, getSaltStateJob, getUpdateStatesStatus, postSaltStateJob } from 'api/salt'
+import { getStatesStatusBygroup, getSaltStateJob, getUpdateStatesStatus, postSaltStateJob } from '@/api/salt'
 import { LIMIT, pagesize, pageformat } from '@/config'
 import sesectHosts from '../components/hosttransfer.vue'
 

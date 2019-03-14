@@ -18,7 +18,8 @@ class UserMenuPermsViewSet(viewsets.ModelViewSet):
 
 
 @api_view()
-def routers(request, username=None):
+def routers(request):
+    username = request.GET['username']
     userqueryset = User.objects.get(username=username)
     userserializer = UserSerializer(userqueryset, context={'request': request}).data
     groups = userserializer['groups']

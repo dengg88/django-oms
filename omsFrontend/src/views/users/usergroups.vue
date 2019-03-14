@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { getGroup, postGroup, deleteGroup } from 'api/user'
+import { getGroup, postGroup, deleteGroup } from '@/api/user'
 import { LIMIT, pagesize, pageformat } from '@/config'
 import addGroup from '../components/addgroup.vue'
 import viewGroup from './components/viewgroup.vue'

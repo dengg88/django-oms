@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { getUser } from 'api/user'
+import { getUser } from '@/api/user'
 import { LIMIT, pagesize, pageformat } from '@/config'
 
 export default {

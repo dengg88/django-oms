@@ -24,9 +24,9 @@
 </template>
 <script>
 import { getConversionTime } from '@/utils'
-import { postUpload } from 'api/tool'
-import { getTickettype } from 'api/workticket'
-import { getWiki, putWiki } from 'api/wiki'
+import { postUpload } from '@/api/tool'
+import { getTickettype } from '@/api/workticket'
+import { getWiki, putWiki } from '@/api/wiki'
 
 export default {
   data() {

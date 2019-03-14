@@ -1,10 +1,10 @@
 import request from '@/utils/request'
-import apiURL from '@/config'
+import { apiuri } from '@/config'
 
 // worktickets
 export function postWorkticket(data) {
   return request({
-    url: apiURL.worktickers,
+    url: apiuri.worktickers,
     method: 'post',
     data
   })
@@ -12,7 +12,7 @@ export function postWorkticket(data) {
 
 export function getWorkticket(query) {
   return request({
-    url: apiURL.worktickers,
+    url: apiuri.worktickers,
     method: 'get',
     params: query
   })
@@ -20,7 +20,7 @@ export function getWorkticket(query) {
 
 export function putWorkticket(id, data) {
   return request({
-    url: apiURL.worktickers + id + '/',
+    url: apiuri.worktickers + id + '/',
     method: 'put',
     data
   })
@@ -28,7 +28,7 @@ export function putWorkticket(id, data) {
 
 export function patchWorkticket(id, data) {
   return request({
-    url: apiURL.worktickers + id + '/',
+    url: apiuri.worktickers + id + '/',
     method: 'patch',
     data
   })
@@ -36,7 +36,7 @@ export function patchWorkticket(id, data) {
 
 export function deleteWorkticket(id) {
   return request({
-    url: apiURL.worktickers + id + '/',
+    url: apiuri.worktickers + id + '/',
     method: 'delete'
   })
 }
@@ -44,7 +44,7 @@ export function deleteWorkticket(id) {
 // tickettypes
 export function postTickettype(data) {
   return request({
-    url: apiURL.tickettypes,
+    url: apiuri.tickettypes,
     method: 'post',
     data
   })
@@ -52,7 +52,7 @@ export function postTickettype(data) {
 
 export function getTickettype(query) {
   return request({
-    url: apiURL.tickettypes,
+    url: apiuri.tickettypes,
     method: 'get',
     params: query
   })
@@ -60,7 +60,7 @@ export function getTickettype(query) {
 
 export function putTickettype(id, data) {
   return request({
-    url: apiURL.tickettypes + id + '/',
+    url: apiuri.tickettypes + id + '/',
     method: 'put',
     data
   })
@@ -68,7 +68,7 @@ export function putTickettype(id, data) {
 
 export function deleteTickettype(id) {
   return request({
-    url: apiURL.tickettypes + id + '/',
+    url: apiuri.tickettypes + id + '/',
     method: 'delete'
   })
 }
@@ -76,7 +76,7 @@ export function deleteTickettype(id) {
 // ticketcomments
 export function postTicketcomment(data) {
   return request({
-    url: apiURL.ticketcomments,
+    url: apiuri.ticketcomments,
     method: 'post',
     data
   })
@@ -84,7 +84,7 @@ export function postTicketcomment(data) {
 
 export function getTicketcomment(query) {
   return request({
-    url: apiURL.ticketcomments,
+    url: apiuri.ticketcomments,
     method: 'get',
     params: query
   })
@@ -92,7 +92,7 @@ export function getTicketcomment(query) {
 
 export function putTicketcomment(id, data) {
   return request({
-    url: apiURL.ticketcomments + id + '/',
+    url: apiuri.ticketcomments + id + '/',
     method: 'put',
     data
   })
@@ -100,7 +100,7 @@ export function putTicketcomment(id, data) {
 
 export function deleteTicketcomment(id) {
   return request({
-    url: apiURL.ticketcomments + id + '/',
+    url: apiuri.ticketcomments + id + '/',
     method: 'delete'
   })
 }
@@ -108,7 +108,7 @@ export function deleteTicketcomment(id) {
 // ticketenclosures
 export function postTicketenclosure(data) {
   return request({
-    url: apiURL.ticketenclosures,
+    url: apiuri.ticketenclosures,
     method: 'post',
     data
   })
@@ -116,7 +116,7 @@ export function postTicketenclosure(data) {
 
 export function getTicketenclosure(query) {
   return request({
-    url: apiURL.ticketenclosures,
+    url: apiuri.ticketenclosures,
     method: 'get',
     params: query
   })
@@ -124,7 +124,7 @@ export function getTicketenclosure(query) {
 
 export function deleteTicketenclosure(id) {
   return request({
-    url: apiURL.ticketenclosures + id + '/',
+    url: apiuri.ticketenclosures + id + '/',
     method: 'delete'
   })
 }

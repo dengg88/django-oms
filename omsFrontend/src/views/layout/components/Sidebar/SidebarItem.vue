@@ -1,68 +1,96 @@
 <template>
-  <div class="menu-wrapper">
-    <template v-for="item in routes" v-if="!item.hidden&&item.children.length>0">
+  <div v-if="!item.hidden" class="menu-wrapper">
 
-      <router-link v-if="item.children.length===1 && !item.children[0].children && item.children[0].icon == 'dashboard'"
-                   :to="item.path+'/'+item.children[0].path" :key="item.children[0].name">
-        <el-menu-item :index="item.path+'/'+item.children[0].path" class='submenu-title-noDropdown'>
-          <icon v-if='item.children[0].icon' :name="item.children[0].icon" :scale="iconsize" class="wscn-icon"></icon>
-          <span v-if="item.children[0]&&item.children[0].name">{{item.children[0].name}}</span>
+    <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
+      <app-link :to="resolvePath(onlyOneChild.path)">
+        <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
+          <item v-if="onlyOneChild.meta" :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" :title="generateTitle(onlyOneChild.meta.title)" />
         </el-menu-item>
-      </router-link>
-
-      <el-submenu v-else :index="item.name||item.path" :key="item.name">
-        <template slot="title">
-          <icon v-if='item.icon' :name="item.icon" :scale="iconsize" class="wscn-icon"></icon>
-          <span v-if="item&&item.name">{{item.name}}</span>
-        </template>
-
-        <template v-for="child in item.children" v-if="!child.hidden">
-          <sidebar-item class="nest-menu" v-if="child.children&&child.children.length>0" :routes="[child]"
-                        :key="child.path"></sidebar-item>
-          <router-link v-else :to="item.path+'/'+child.path" :key="child.name">
-            <el-menu-item :index="item.path+'/'+child.path">
-              <icon name="diamond" scale="1" class="child-icon"></icon>
-              <span v-if="child&&child.name">{{child.name}}</span>
-            </el-menu-item>
-          </router-link>
-        </template>
-      </el-submenu>
-
+      </app-link>
     </template>
+
+    <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
+      <template slot="title">
+        <item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="generateTitle(item.meta.title)" />
+      </template>
+      <sidebar-item
+        v-for="child in item.children"
+        :is-nest="true"
+        :item="child"
+        :key="child.path"
+        :base-path="resolvePath(child.path)"
+        class="nest-menu" />
+    </el-submenu>
+
   </div>
 </template>
 
 <script>
+import path from 'path'
+import { generateTitle } from '@/utils/i18n'
+import { isExternal } from '@/utils/validate'
+import Item from './Item'
+import AppLink from './Link'
+import FixiOSBug from './FixiOSBug'
+
 export default {
   name: 'SidebarItem',
+  components: { Item, AppLink },
+  mixins: [FixiOSBug],
   props: {
-    routes: {
-      type: Array
+    // route object
+    item: {
+      type: Object,
+      required: true
+    },
+    isNest: {
+      type: Boolean,
+      default: false
+    },
+    basePath: {
+      type: String,
+      default: ''
     }
   },
   data() {
-    return {
-      iconsize: 1.4
-    }
+    // To fix https://github.com/PanJiaChen/vue-admin-template/issues/237
+    // TODO: refactor with render function
+    this.onlyOneChild = null
+    return {}
   },
   methods: {
+    hasOneShowingChild(children = [], parent) {
+      const showingChildren = children.filter(item => {
+        if (item.hidden) {
+          return false
+        } else {
+          // Temp set(will be used if only has one showing child)
+          this.onlyOneChild = item
+          return true
+        }
+      })
+
+      // When there is only one child router, the child router is displayed by default
+      if (showingChildren.length === 1) {
+        return true
+      }
+
+      // Show parent if there are no child router to display
+      if (showingChildren.length === 0) {
+        this.onlyOneChild = { ... parent, path: '', noShowingChildren: true }
+        return true
+      }
+
+      return false
+    },
+    resolvePath(routePath) {
+      if (isExternal(routePath)) {
+        return routePath
+      }
+      return path.resolve(this.basePath, routePath)
+    },
+
+    generateTitle
   }
 }
 </script>
-
-<style rel="stylesheet/scss" lang="scss" scoped>
-  .wscn-icon {
-    margin-right: 10px;
-    min-width: 25px;
-  }
-
-  .child-icon {
-    color: rgba(88, 255, 40, 0.38);
-    margin-right: 10px;
-  }
-
-  .hideSidebar .menu-indent {
-    display: block;
-    text-indent: 10px;
-  }
-</style>

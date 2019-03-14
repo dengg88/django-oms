@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { getUpload, deleteUpload } from 'api/tool'
+import { getUpload, deleteUpload } from '@/api/tool'
 import { LIMIT, pagesize, pageformat } from '@/config'
 
 export default {

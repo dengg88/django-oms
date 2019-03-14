@@ -15,7 +15,7 @@ from salts.views import update_states_status, get_state_bygroup
 
 urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + [
     url(r'^api/', include(router.urls)),
-    url(r'^api/routers/(?P<username>\w+)', routers, name="myrouter"),
+    url(r'^api/routers/', routers, name="myrouter"),
     url(r'^api/update_jobs_status/', update_jobs_status, name="update_jobs_status"),
     url(r'^api/update_states_status/', update_states_status, name="update_states_status"),
     url(r'^api/get_state_bygroup/', get_state_bygroup, name="get_state_bygroup"),
@@ -27,5 +27,5 @@ urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + [
     url(r'^api/changepasswd/', PasswordChangeView.as_view(), name='changepasswd'),
     url(r'^api/api-token-auth/', obtain_jwt_token, name='rest_framework_token'),
     url(r'^api/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'', TemplateView.as_view(template_name="index.html")),
+    # url(r'', TemplateView.as_view(template_name="index.html")),
 ]

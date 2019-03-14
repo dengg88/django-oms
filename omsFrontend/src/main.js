@@ -1,39 +1,27 @@
 import Vue from 'vue'
-import App from './App'
-import router from './router'
-import store from './store'
-import * as filters from './filters' // 全局filter
-import './permission' // 权限
-import './utils/jsArrayRemove'
 
-/* element */
+import Cookies from 'js-cookie'
+
+import 'normalize.css/normalize.css' // A modern alternative to CSS resets
+
 import Element from 'element-ui'
-Vue.use(Element)
+import 'element-ui/lib/theme-chalk/index.css'
 
-/* icon */
-import 'vue-awesome/icons'
-import Icon from 'vue-awesome/components/Icon'
-Vue.component('icon', Icon)
-import 'font-awesome/css/font-awesome.min.css'
+import '@/styles/index.scss' // global css
 
-/* markdown */
-import mavonEditor from 'mavon-editor'
-import 'mavon-editor/dist/css/index.css'
-Vue.use(mavonEditor)
+import App from './App'
+import store from './store'
+import router from './router'
 
-import 'prismjs/themes/prism-tomorrow.css'
+import i18n from './lang' // Internationalization
+import './permission' // permission control
 
-/* calendar */
-import fullCalendar from 'vue-fullcalendar'
-Vue.component('full-calendar', fullCalendar)
+import * as filters from './filters' // global filters
 
-/* 懒加载 */
-import LazyRender from 'vue-lazy-render'
-Vue.use(LazyRender)
-
-/* datatables */
-import DataTables from 'vue-data-tables'
-Vue.use(DataTables)
+Vue.use(Element, {
+  size: Cookies.get('size') || 'medium', // set element-ui default size
+  i18n: (key, value) => i18n.t(key, value)
+})
 
 // register global utility filters.
 Object.keys(filters).forEach(key => {
@@ -46,6 +34,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  template: '<App/>',
-  components: { App }
+  i18n,
+  render: h => h(App)
 })

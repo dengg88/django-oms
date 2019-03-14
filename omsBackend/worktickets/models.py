@@ -32,7 +32,7 @@ class WorkTicket(models.Model):
     create_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='create_user', verbose_name=u'创建者')
     action_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='action_user', verbose_name=u'指派人')
     edit_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='edit_user', verbose_name=u'处理人')
-    create_group = models.ManyToManyField(Group, null=True, blank=True, verbose_name=u'部门')
+    create_group = models.ManyToManyField(Group, blank=True, verbose_name=u'部门')
     level = models.CharField(max_length=3, choices=TicketLevel.items(), default=2, verbose_name=u'工单等级')
     ticket_status = models.CharField(max_length=3, choices=TicketStatus.items(), default=0, verbose_name=u'工单状态')
     create_time = models.DateTimeField(auto_now_add=True, verbose_name=u'工单创建时间')

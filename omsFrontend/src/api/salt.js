@@ -1,10 +1,10 @@
 import request from '@/utils/request'
-import apiURL from '@/config'
+import { apiuri } from '@/config'
 
 // salts
 export function getCmdrun(data) {
   return request({
-    url: apiURL.cmdrun,
+    url: apiuri.cmdrun,
     method: 'post',
     data
   })
@@ -12,14 +12,14 @@ export function getCmdrun(data) {
 
 export function getSaltResult(jid) {
   return request({
-    url: apiURL.get_cmd_result + jid,
+    url: apiuri.get_cmd_result + jid,
     method: 'get'
   })
 }
 
 export function getSyncRemoteServer(method) {
   return request({
-    url: apiURL.sync_remote_server + method,
+    url: apiuri.sync_remote_server + method,
     method: 'get'
   })
 }
@@ -27,7 +27,7 @@ export function getSyncRemoteServer(method) {
 // saltstates
 export function postSaltState(data) {
   return request({
-    url: apiURL.saltstates,
+    url: apiuri.saltstates,
     method: 'post',
     data
   })
@@ -35,7 +35,7 @@ export function postSaltState(data) {
 
 export function getSaltState(query, id) {
   return request({
-    url: id ? apiURL.saltstates + id + '/' : apiURL.saltstates,
+    url: id ? apiuri.saltstates + id + '/' : apiuri.saltstates,
     method: 'get',
     params: query
   })
@@ -43,7 +43,7 @@ export function getSaltState(query, id) {
 
 export function putSaltState(id, data) {
   return request({
-    url: apiURL.saltstates + id + '/',
+    url: apiuri.saltstates + id + '/',
     method: 'put',
     data
   })
@@ -51,7 +51,7 @@ export function putSaltState(id, data) {
 
 export function deleteSaltState(id) {
   return request({
-    url: apiURL.saltstates + id + '/',
+    url: apiuri.saltstates + id + '/',
     method: 'delete'
   })
 }
@@ -59,7 +59,7 @@ export function deleteSaltState(id) {
 // saltstategroups
 export function postSaltStateGroup(data) {
   return request({
-    url: apiURL.saltstategroups,
+    url: apiuri.saltstategroups,
     method: 'post',
     data
   })
@@ -67,7 +67,7 @@ export function postSaltStateGroup(data) {
 
 export function getSaltStateGroup(query, id) {
   return request({
-    url: id ? apiURL.saltstategroups + id + '/' : apiURL.saltstategroups,
+    url: id ? apiuri.saltstategroups + id + '/' : apiuri.saltstategroups,
     method: 'get',
     params: query
   })
@@ -75,7 +75,7 @@ export function getSaltStateGroup(query, id) {
 
 export function putSaltStateGroup(id, data) {
   return request({
-    url: apiURL.saltstategroups + id + '/',
+    url: apiuri.saltstategroups + id + '/',
     method: 'put',
     data
   })
@@ -83,7 +83,7 @@ export function putSaltStateGroup(id, data) {
 
 export function deleteSaltStateGroup(id) {
   return request({
-    url: apiURL.saltstategroups + id + '/',
+    url: apiuri.saltstategroups + id + '/',
     method: 'delete'
   })
 }
@@ -91,7 +91,7 @@ export function deleteSaltStateGroup(id) {
 // saltjobs
 export function getSaltStateJob(query) {
   return request({
-    url: apiURL.saltjobs,
+    url: apiuri.saltjobs,
     method: 'get',
     params: query
   })
@@ -99,7 +99,7 @@ export function getSaltStateJob(query) {
 
 export function postSaltStateJob(data) {
   return request({
-    url: apiURL.saltjobs,
+    url: apiuri.saltjobs,
     method: 'post',
     data
   })
@@ -108,7 +108,7 @@ export function postSaltStateJob(data) {
 // update_states_status
 export function getUpdateStatesStatus(query) {
   return request({
-    url: apiURL.update_states_status,
+    url: apiuri.update_states_status,
     method: 'get',
     params: query
   })
@@ -117,7 +117,7 @@ export function getUpdateStatesStatus(query) {
 // get_state_bygroup
 export function getStatesStatusBygroup(query) {
   return request({
-    url: apiURL.get_state_bygroup,
+    url: apiuri.get_state_bygroup,
     method: 'get',
     params: query
   })

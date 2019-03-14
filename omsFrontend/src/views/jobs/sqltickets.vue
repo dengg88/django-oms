@@ -92,7 +92,7 @@
 <script>
 import { getSqlTicket, patchSqlTicket } from '@/api/job'
 import { LIMIT, pagesize, pageformat } from '@/config'
-import { postSendmessage } from 'api/tool'
+import { postSendmessage } from '@/api/tool'
 import { mapGetters } from 'vuex'
 import addGroup from './components/addsqlticket.vue'
 import editGroup from './components/editsqlticket.vue'

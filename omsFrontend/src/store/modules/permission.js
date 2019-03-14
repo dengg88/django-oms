@@ -1,8 +1,8 @@
 import { asyncRouterMap, baseRouterMap, errorRouterMap } from '@/router'
 
 /**
- * 通过name判断是否与当前用户权限匹配
- * @param menus
+ * 通过meta.role判断是否与当前用户权限匹配
+ * @param roles
  * @param route
  */
 function hasPermission(menus, route) {
@@ -19,8 +19,8 @@ function hasPermission(menus, route) {
 
 /**
  * 递归过滤异步路由表，返回符合用户角色权限的路由表
- * @param asyncRouterMap
- * @param groups
+ * @param menus asyncRouterMap
+ * @param menus
  */
 function filterAsyncRouter(asyncRouterMap, menus) {
   const accessedRouters = asyncRouterMap.filter(route => {
@@ -35,13 +35,14 @@ function filterAsyncRouter(asyncRouterMap, menus) {
   return accessedRouters
 }
 
+
 const permission = {
   state: {
-    routers: baseRouterMap,
+    routers: [],
     addRouters: []
   },
   mutations: {
-    SET_ROUTERS: (state, routers) => {
+    setRouters: (state, routers) => {
       state.addRouters = routers
       state.routers = baseRouterMap.concat(routers)
     }
@@ -50,13 +51,13 @@ const permission = {
     GenerateRoutes({ commit }, { role, menus }) {
       return new Promise(resolve => {
         let accessedRouters
-        if (role === 'super') {
-          commit('SET_ROUTERS', accessedRouters)
+        if (role === 'admin') {
+          commit('setRouters', accessedRouters)
           accessedRouters = asyncRouterMap.concat(errorRouterMap)
         } else {
           accessedRouters = filterAsyncRouter(asyncRouterMap, menus).concat(errorRouterMap)
         }
-        commit('SET_ROUTERS', accessedRouters)
+        commit('setRouters', accessedRouters)
         resolve()
       })
     }

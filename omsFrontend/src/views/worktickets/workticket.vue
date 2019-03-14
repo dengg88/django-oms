@@ -123,7 +123,7 @@
 </template>
 
 <script>
-import { getWorkticket, patchWorkticket } from 'api/workticket'
+import { getWorkticket, patchWorkticket } from '@/api/workticket'
 import { LIMIT, pagesize } from '@/config'
 import { mapGetters } from 'vuex'
 

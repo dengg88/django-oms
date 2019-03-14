@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { getSaltStateGroup, getSaltState, postSaltState, deleteSaltState } from 'api/salt'
+import { getSaltStateGroup, getSaltState, postSaltState, deleteSaltState } from '@/api/salt'
 import { LIMIT, pagesize, pageformat } from '@/config'
 
 export default {

@@ -44,10 +44,10 @@
   </div>
 </template>
 <script>
-import { getWiki } from 'api/wiki'
+import { getWiki } from '@/api/wiki'
 import { LIMIT } from '@/config'
 import VueMarkdown from 'vue-markdown' // 前端显示
-import { getTickettype } from 'api/workticket'
+import { getTickettype } from '@/api/workticket'
 
 export default {
   components: {

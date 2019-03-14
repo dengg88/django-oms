@@ -153,7 +153,7 @@
 <script>
 import { getDeployTicket, patchDeployTicket, getDeployTicketEnclosur } from '@/api/job'
 import { LIMIT, pagesize, pageformat, apiUrl } from '@/config'
-import { postSendmessage } from 'api/tool'
+import { postSendmessage } from '@/api/tool'
 import { mapGetters } from 'vuex'
 import addGroup from './components/addjobticket.vue'
 import editGroup from './components/editjobticket.vue'

@@ -15,8 +15,8 @@
   </el-form>
 </template>
 <script>
-import sesectHosts from 'views/components/hosttransfer.vue'
-import { getGroup } from 'api/user'
+import sesectHosts from '@/views/components/hosttransfer.vue'
+import { getGroup } from '@/api/user'
 import { postHostPerm } from '@/api/perm'
 
 export default {

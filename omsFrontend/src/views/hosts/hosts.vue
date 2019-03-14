@@ -121,7 +121,7 @@
 
 <script>
 import { postHost, getHost, putHost, deleteHost } from '@/api/host'
-import { getSyncRemoteServer } from 'api/salt'
+import { getSyncRemoteServer } from '@/api/salt'
 import { LIMIT, pagesize, pageformat } from '@/config'
 import addObj from './components/addhost.vue'
 import editObj from './components/edithost.vue'

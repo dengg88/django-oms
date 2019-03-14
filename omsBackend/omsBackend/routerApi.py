@@ -95,24 +95,24 @@ router.register(r'records', RecordViewSet)
 # router.register(r'opsdemandmanagers', OpsDemandManagerViewSet)
 # router.register(r'opsprojectcomments', ProjectCommentViewSet)
 
-from dnsmanager.views import DnsApiKeyViewSet, DnsDomainViewSet, DnsRecordViewSet, DnspodDomainViewSet, \
-    DnspodRecordViewSet, GodaddyDomainViewSet, GodaddyRecordViewSet, BindDomainViewSet, BindRecordViewSet
-
-router.register(r'dnsapikeys', DnsApiKeyViewSet)
-router.register(r'dnsdomains', DnsDomainViewSet)
-router.register(r'dnsrecords', DnsRecordViewSet)
-router.register(r'dnspoddomains', DnspodDomainViewSet, base_name='dnspoddomains')
-router.register(r'dnspodrecords', DnspodRecordViewSet, base_name='dnspodrecords')
-router.register(r'godaddydomains', GodaddyDomainViewSet, base_name='godaddydomains')
-router.register(r'godaddyreecords', GodaddyRecordViewSet, base_name='godaddyreecords')
-router.register(r'binddomains', BindDomainViewSet, base_name='binddomains')
-router.register(r'bindrecords', BindRecordViewSet, base_name='bindrecords')
-
-from zkmanager.views import ZkUserViewSet, PunchViewSet, PunchSetViewSet
-
-router.register(r'zkusers', ZkUserViewSet)
-router.register(r'zkpunchs', PunchViewSet)
-router.register(r'zkpunchset', PunchSetViewSet)
+# from dnsmanager.views import DnsApiKeyViewSet, DnsDomainViewSet, DnsRecordViewSet, DnspodDomainViewSet, \
+#     DnspodRecordViewSet, GodaddyDomainViewSet, GodaddyRecordViewSet, BindDomainViewSet, BindRecordViewSet
+#
+# router.register(r'dnsapikeys', DnsApiKeyViewSet)
+# router.register(r'dnsdomains', DnsDomainViewSet)
+# router.register(r'dnsrecords', DnsRecordViewSet)
+# router.register(r'dnspoddomains', DnspodDomainViewSet, base_name='dnspoddomains')
+# router.register(r'dnspodrecords', DnspodRecordViewSet, base_name='dnspodrecords')
+# router.register(r'godaddydomains', GodaddyDomainViewSet, base_name='godaddydomains')
+# router.register(r'godaddyreecords', GodaddyRecordViewSet, base_name='godaddyreecords')
+# router.register(r'binddomains', BindDomainViewSet, base_name='binddomains')
+# router.register(r'bindrecords', BindRecordViewSet, base_name='bindrecords')
+#
+# from zkmanager.views import ZkUserViewSet, PunchViewSet, PunchSetViewSet
+#
+# router.register(r'zkusers', ZkUserViewSet)
+# router.register(r'zkpunchs', PunchViewSet)
+# router.register(r'zkpunchset', PunchSetViewSet)
 
 from zbmanager.views import ZbHostViewSet, ZbHostGroupViewSet, ZbTemplateViewSet
 

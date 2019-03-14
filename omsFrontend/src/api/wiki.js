@@ -1,10 +1,10 @@
 import request from '@/utils/request'
-import apiURL from '@/config'
+import { apiuri } from '@/config'
 
 // wikis
 export function postWiki(data) {
   return request({
-    url: apiURL.wikis,
+    url: apiuri.wikis,
     method: 'post',
     data
   })
@@ -12,7 +12,7 @@ export function postWiki(data) {
 
 export function getWiki(query, id) {
   return request({
-    url: id ? apiURL.wikis + id + '/' : apiURL.wikis,
+    url: id ? apiuri.wikis + id + '/' : apiuri.wikis,
     method: 'get',
     params: query
   })
@@ -20,7 +20,7 @@ export function getWiki(query, id) {
 
 export function putWiki(id, data) {
   return request({
-    url: apiURL.wikis + id + '/',
+    url: apiuri.wikis + id + '/',
     method: 'put',
     data
   })
@@ -28,7 +28,7 @@ export function putWiki(id, data) {
 
 export function deleteWiki(id) {
   return request({
-    url: apiURL.wikis + id + '/',
+    url: apiuri.wikis + id + '/',
     method: 'delete'
   })
 }
@@ -36,7 +36,7 @@ export function deleteWiki(id) {
 // opswikis
 export function postOpsWiki(data) {
   return request({
-    url: apiURL.opswikis,
+    url: apiuri.opswikis,
     method: 'post',
     data
   })
@@ -44,7 +44,7 @@ export function postOpsWiki(data) {
 
 export function getOpsWiki(query, id) {
   return request({
-    url: id ? apiURL.opswikis + id + '/' : apiURL.opswikis,
+    url: id ? apiuri.opswikis + id + '/' : apiuri.opswikis,
     method: 'get',
     params: query
   })
@@ -52,7 +52,7 @@ export function getOpsWiki(query, id) {
 
 export function putOpsWiki(id, data) {
   return request({
-    url: apiURL.opswikis + id + '/',
+    url: apiuri.opswikis + id + '/',
     method: 'put',
     data
   })
@@ -60,7 +60,7 @@ export function putOpsWiki(id, data) {
 
 export function deleteOpsWiki(id) {
   return request({
-    url: apiURL.opswikis + id + '/',
+    url: apiuri.opswikis + id + '/',
     method: 'delete'
   })
 }

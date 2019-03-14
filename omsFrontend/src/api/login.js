@@ -1,29 +1,27 @@
 import request from '@/utils/request'
-import apiURL from '@/config'
+import { apiuri } from '@/config'
 
-export function login(data) {
+export function loginByUsername(data) {
   return request({
-    url: apiURL.login,
+    url: apiuri.login,
     method: 'post',
     data
   })
 }
 
-export function logout() {
+export function getUserInfo(query) {
   return request({
-    url: apiURL.logout,
-    method: 'get'
-  })
-}
-
-export function getUserInfo(username) {
-  const params = {
-    username: username
-  }
-  return request({
-    url: apiURL.users,
+    url: apiuri.users,
     method: 'get',
-    params: params
+    params: query
   })
 }
 
+// router
+export function getRouterInfo(query) {
+  return request({
+    url: apiuri.routerinfo,
+    method: 'get',
+    params: query
+  })
+}

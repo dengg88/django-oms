@@ -1,8 +1,8 @@
 <template>
-  <a class="link--mallki" :class="className" href="#">
-    {{text}}
-    <span :data-letters="text"></span>
-    <span :data-letters="text"></span>
+  <a :class="className" class="link--mallki" href="#">
+    {{ text }}
+    <span :data-letters="text"/>
+    <span :data-letters="text"/>
   </a>
 </template>
 
@@ -10,7 +10,8 @@
 export default {
   props: {
     className: {
-      type: String
+      type: String,
+      default: ''
     },
     text: {
       type: String,
@@ -20,9 +21,9 @@ export default {
 }
 </script>
 
-
 <style>
 /* Mallki */
+
 .link--mallki {
   font-weight: 800;
   color: #4dd9d5;
@@ -31,10 +32,10 @@ export default {
   transition: color 0.5s 0.25s;
   overflow: hidden;
   position: relative;
-display: inline-block;
-    line-height: 1;
-        outline: none;
-    text-decoration: none;
+  display: inline-block;
+  line-height: 1;
+  outline: none;
+  text-decoration: none;
 }
 
 .link--mallki:hover {
@@ -48,7 +49,7 @@ display: inline-block;
   width: 100%;
   height: 6px;
   margin: -3px 0 0 0;
-  background: rgba(250, 67, 255, 0.55);
+  background: #3888fa;
   position: absolute;
   left: 0;
   top: 50%;
@@ -76,11 +77,11 @@ display: inline-block;
 
 .link--mallki span::before {
   content: attr(data-letters);
+  color: red;
   position: absolute;
   left: 0;
   width: 100%;
-  color: #30fa51;
-  font-size: 26px;
+  color: #3888fa;
   -webkit-transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
 }
@@ -109,5 +110,4 @@ display: inline-block;
   -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
   transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
-
 </style>

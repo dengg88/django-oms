@@ -12,7 +12,7 @@
   </el-form>
 </template>
 <script>
-import sesectHosts from 'views/components/hosttransfer.vue'
+import sesectHosts from '@/views/components/hosttransfer.vue'
 import { putHostPerm } from '@/api/perm'
 
 export default {

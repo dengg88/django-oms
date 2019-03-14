@@ -1,10 +1,10 @@
 import request from '@/utils/request'
-import apiURL from '@/config'
+import { apiuri } from '@/config'
 
 // jobs
 export function postJob(data) {
   return request({
-    url: apiURL.jobs,
+    url: apiuri.jobs,
     method: 'post',
     data
   })
@@ -12,7 +12,7 @@ export function postJob(data) {
 
 export function getJob(query, id) {
   return request({
-    url: id ? apiURL.jobs + id + '/' : apiURL.jobs,
+    url: id ? apiuri.jobs + id + '/' : apiuri.jobs,
     method: 'get',
     params: query
   })
@@ -20,7 +20,7 @@ export function getJob(query, id) {
 
 export function putJob(id, data) {
   return request({
-    url: apiURL.jobs + id + '/',
+    url: apiuri.jobs + id + '/',
     method: 'put',
     data
   })
@@ -28,7 +28,7 @@ export function putJob(id, data) {
 
 export function patchJob(id, data) {
   return request({
-    url: apiURL.jobs + id + '/',
+    url: apiuri.jobs + id + '/',
     method: 'patch',
     data
   })
@@ -36,7 +36,7 @@ export function patchJob(id, data) {
 
 export function deleteJob(id) {
   return request({
-    url: apiURL.jobs + id + '/',
+    url: apiuri.jobs + id + '/',
     method: 'delete'
   })
 }
@@ -44,7 +44,7 @@ export function deleteJob(id) {
 // deployenvs
 export function postDeployenv(data) {
   return request({
-    url: apiURL.deployenvs,
+    url: apiuri.deployenvs,
     method: 'post',
     data
   })
@@ -52,7 +52,7 @@ export function postDeployenv(data) {
 
 export function getDeployenv(query) {
   return request({
-    url: apiURL.deployenvs,
+    url: apiuri.deployenvs,
     method: 'get',
     params: query
   })
@@ -60,7 +60,7 @@ export function getDeployenv(query) {
 
 export function putDeployenv(id, data) {
   return request({
-    url: apiURL.deployenvs + id + '/',
+    url: apiuri.deployenvs + id + '/',
     method: 'put',
     data
   })
@@ -68,7 +68,7 @@ export function putDeployenv(id, data) {
 
 export function deleteDeployenv(id) {
   return request({
-    url: apiURL.deployenvs + id + '/',
+    url: apiuri.deployenvs + id + '/',
     method: 'delete'
   })
 }
@@ -76,7 +76,7 @@ export function deleteDeployenv(id) {
 // deployjobs
 export function postDeployJob(data) {
   return request({
-    url: apiURL.deployjobs,
+    url: apiuri.deployjobs,
     method: 'post',
     data
   })
@@ -84,7 +84,7 @@ export function postDeployJob(data) {
 
 export function getDeployJob(query) {
   return request({
-    url: apiURL.deployjobs,
+    url: apiuri.deployjobs,
     method: 'get',
     params: query
   })
@@ -92,7 +92,7 @@ export function getDeployJob(query) {
 
 export function deleteDeployJob(id) {
   return request({
-    url: apiURL.deployjobs + id + '/',
+    url: apiuri.deployjobs + id + '/',
     method: 'delete'
   })
 }
@@ -100,7 +100,7 @@ export function deleteDeployJob(id) {
 // deployresults
 export function getDeployResult(query) {
   return request({
-    url: apiURL.deployresults,
+    url: apiuri.deployresults,
     method: 'get',
     params: query
   })
@@ -109,7 +109,7 @@ export function getDeployResult(query) {
 // updaejobsstatus
 export function getUpdateJobsStatus(query) {
   return request({
-    url: apiURL.updaejobsstatus,
+    url: apiuri.updaejobsstatus,
     method: 'get',
     params: query
   })
@@ -118,7 +118,7 @@ export function getUpdateJobsStatus(query) {
 // deploycmds
 export function postDeploycmd(data) {
   return request({
-    url: apiURL.deploycmds,
+    url: apiuri.deploycmds,
     method: 'post',
     data
   })
@@ -126,7 +126,7 @@ export function postDeploycmd(data) {
 
 export function getDeploycmd(query) {
   return request({
-    url: apiURL.deploycmds,
+    url: apiuri.deploycmds,
     method: 'get',
     params: query
   })
@@ -134,7 +134,7 @@ export function getDeploycmd(query) {
 
 export function putDeploycmd(id, data) {
   return request({
-    url: apiURL.deploycmds + id + '/',
+    url: apiuri.deploycmds + id + '/',
     method: 'put',
     data
   })
@@ -142,7 +142,7 @@ export function putDeploycmd(id, data) {
 
 export function deleteDeploycmd(id) {
   return request({
-    url: apiURL.deploycmds + id + '/',
+    url: apiuri.deploycmds + id + '/',
     method: 'delete'
   })
 }
@@ -150,7 +150,7 @@ export function deleteDeploycmd(id) {
 // deploytickets
 export function postDeployTicket(data) {
   return request({
-    url: apiURL.deploytickets,
+    url: apiuri.deploytickets,
     method: 'post',
     data
   })
@@ -158,7 +158,7 @@ export function postDeployTicket(data) {
 
 export function getDeployTicket(query, id) {
   return request({
-    url: id ? apiURL.deploytickets + id + '/' : apiURL.deploytickets,
+    url: id ? apiuri.deploytickets + id + '/' : apiuri.deploytickets,
     method: 'get',
     params: query
   })
@@ -166,7 +166,7 @@ export function getDeployTicket(query, id) {
 
 export function putDeployTicket(id, data) {
   return request({
-    url: apiURL.deploytickets + id + '/',
+    url: apiuri.deploytickets + id + '/',
     method: 'put',
     data
   })
@@ -174,7 +174,7 @@ export function putDeployTicket(id, data) {
 
 export function patchDeployTicket(id, data) {
   return request({
-    url: apiURL.deploytickets + id + '/',
+    url: apiuri.deploytickets + id + '/',
     method: 'patch',
     data
   })
@@ -183,7 +183,7 @@ export function patchDeployTicket(id, data) {
 // deployticketenclosures
 export function postDeployTicketEnclosur(data) {
   return request({
-    url: apiURL.deployticketenclosures,
+    url: apiuri.deployticketenclosures,
     method: 'post',
     data
   })
@@ -191,7 +191,7 @@ export function postDeployTicketEnclosur(data) {
 
 export function getDeployTicketEnclosur(query) {
   return request({
-    url: apiURL.deployticketenclosures,
+    url: apiuri.deployticketenclosures,
     method: 'get',
     params: query
   })
@@ -199,7 +199,7 @@ export function getDeployTicketEnclosur(query) {
 
 export function deleteDeployTicketEnclosur(id) {
   return request({
-    url: apiURL.deployticketenclosures + id + '/',
+    url: apiuri.deployticketenclosures + id + '/',
     method: 'delete'
   })
 }
@@ -207,7 +207,7 @@ export function deleteDeployTicketEnclosur(id) {
 // sqltickets
 export function postSqlTicket(data) {
   return request({
-    url: apiURL.sqltickets,
+    url: apiuri.sqltickets,
     method: 'post',
     data
   })
@@ -215,7 +215,7 @@ export function postSqlTicket(data) {
 
 export function getSqlTicket(query, id) {
   return request({
-    url: id ? apiURL.sqltickets + id + '/' : apiURL.sqltickets,
+    url: id ? apiuri.sqltickets + id + '/' : apiuri.sqltickets,
     method: 'get',
     params: query
   })
@@ -223,7 +223,7 @@ export function getSqlTicket(query, id) {
 
 export function putSqlTicket(id, data) {
   return request({
-    url: apiURL.sqltickets + id + '/',
+    url: apiuri.sqltickets + id + '/',
     method: 'put',
     data
   })
@@ -231,7 +231,7 @@ export function putSqlTicket(id, data) {
 
 export function patchSqlTicket(id, data) {
   return request({
-    url: apiURL.sqltickets + id + '/',
+    url: apiuri.sqltickets + id + '/',
     method: 'patch',
     data
   })

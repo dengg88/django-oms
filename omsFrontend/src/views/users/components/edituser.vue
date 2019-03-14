@@ -28,7 +28,7 @@
   </el-form>
 </template>
 <script>
-import { patchUser, getGroup, getRole } from 'api/user'
+import { patchUser, getGroup, getRole } from '@/api/user'
 
 export default {
   components: {},

@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import { getWiki, deleteWiki } from 'api/wiki'
+import { getWiki, deleteWiki } from '@/api/wiki'
 import { LIMIT, pagesize, pageformat } from '@/config'
 import { mapGetters } from 'vuex'
 

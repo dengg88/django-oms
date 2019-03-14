@@ -15,7 +15,7 @@
 </template>
 <script>
 import sesectDatas from './wikitransfer.vue'
-import { getGroup } from 'api/user'
+import { getGroup } from '@/api/user'
 import { postWikiPerm } from '@/api/perm'
 
 export default {

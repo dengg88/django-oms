@@ -1,10 +1,10 @@
 import request from '@/utils/request'
-import apiURL from '@/config'
+import { apiuri } from '@/config'
 
 // upload
 export function postUpload(data) {
   return request({
-    url: apiURL.uploads,
+    url: apiuri.uploads,
     method: 'post',
     data
   })
@@ -12,7 +12,7 @@ export function postUpload(data) {
 
 export function getUpload(query, id) {
   return request({
-    url: id ? apiURL.uploads + id + '/' : apiURL.uploads,
+    url: id ? apiuri.uploads + id + '/' : apiuri.uploads,
     method: 'get',
     params: query
   })
@@ -20,7 +20,7 @@ export function getUpload(query, id) {
 
 export function deleteUpload(id) {
   return request({
-    url: apiURL.uploads + id + '/',
+    url: apiuri.uploads + id + '/',
     method: 'delete'
   })
 }
@@ -28,7 +28,7 @@ export function deleteUpload(id) {
 // sendmail
 export function postSendmail(data) {
   return request({
-    url: apiURL.sendmail,
+    url: apiuri.sendmail,
     method: 'post',
     data
   })
@@ -37,7 +37,7 @@ export function postSendmail(data) {
 // sendmessage
 export function postSendmessage(data) {
   return request({
-    url: apiURL.sendmessage,
+    url: apiuri.sendmessage,
     method: 'post',
     data
   })
@@ -46,7 +46,7 @@ export function postSendmessage(data) {
 // calenders
 export function postCalender(data) {
   return request({
-    url: apiURL.calenders,
+    url: apiuri.calenders,
     method: 'post',
     data
   })
@@ -54,7 +54,7 @@ export function postCalender(data) {
 
 export function getCalender(query, id) {
   return request({
-    url: id ? apiURL.calenders + id + '/' : apiURL.calenders,
+    url: id ? apiuri.calenders + id + '/' : apiuri.calenders,
     method: 'get',
     params: query
   })
@@ -62,7 +62,7 @@ export function getCalender(query, id) {
 
 export function deleteCalender(id) {
   return request({
-    url: apiURL.calenders + id + '/',
+    url: apiuri.calenders + id + '/',
     method: 'delete'
   })
 }
@@ -70,7 +70,7 @@ export function deleteCalender(id) {
 // records
 export function postRecord(data) {
   return request({
-    url: apiURL.records,
+    url: apiuri.records,
     method: 'post',
     data
   })
@@ -78,7 +78,7 @@ export function postRecord(data) {
 
 export function getRecord(query, id) {
   return request({
-    url: apiURL.records,
+    url: apiuri.records,
     method: 'get',
     params: query
   })

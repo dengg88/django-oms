@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { getTickettype, postTickettype, putTickettype, deleteTickettype } from 'api/workticket'
+import { getTickettype, postTickettype, putTickettype, deleteTickettype } from '@/api/workticket'
 import { LIMIT, pagesize, pageformat } from '@/config'
 import addGroup from '../components/addgroup.vue'
 import editGroup from '../components/editgroup.vue'

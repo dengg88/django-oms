@@ -30,7 +30,7 @@
 
 <script>
 import { postSqlTicket } from '@/api/job'
-import { postSendmessage } from 'api/tool'
+import { postSendmessage } from '@/api/tool'
 
 export default {
   data() {

@@ -51,9 +51,9 @@
   </div>
 </template>
 <script>
-import { postWorkticket, postTicketenclosure, getTickettype } from 'api/workticket'
-import { postUpload, postSendmessage } from 'api/tool'
-import { getUser } from 'api/user'
+import { postWorkticket, postTicketenclosure, getTickettype } from '@/api/workticket'
+import { postUpload, postSendmessage } from '@/api/tool'
+import { getUser } from '@/api/user'
 import { uploadurl } from '@/config'
 import { mapGetters } from 'vuex'
 import { getConversionTime } from '@/utils'

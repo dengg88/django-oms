@@ -1,10 +1,10 @@
 import request from '@/utils/request'
-import apiURL from '@/config'
+import { apiuri } from '@/config'
 
 // hosts
 export function postHost(data) {
   return request({
-    url: apiURL.hosts,
+    url: apiuri.hosts,
     method: 'post',
     data
   })
@@ -12,7 +12,7 @@ export function postHost(data) {
 
 export function getHost(query) {
   return request({
-    url: apiURL.hosts,
+    url: apiuri.hosts,
     method: 'get',
     params: query
   })
@@ -20,7 +20,7 @@ export function getHost(query) {
 
 export function putHost(id, data) {
   return request({
-    url: apiURL.hosts + id + '/',
+    url: apiuri.hosts + id + '/',
     method: 'put',
     data
   })
@@ -28,7 +28,7 @@ export function putHost(id, data) {
 
 export function patchHost(id, data) {
   return request({
-    url: apiURL.hosts + id + '/',
+    url: apiuri.hosts + id + '/',
     method: 'patch',
     data
   })
@@ -36,7 +36,7 @@ export function patchHost(id, data) {
 
 export function deleteHost(id) {
   return request({
-    url: apiURL.hosts + id + '/',
+    url: apiuri.hosts + id + '/',
     method: 'delete'
   })
 }
@@ -44,7 +44,7 @@ export function deleteHost(id) {
 // idcs
 export function postIdc(data) {
   return request({
-    url: apiURL.idcs,
+    url: apiuri.idcs,
     method: 'post',
     data
   })
@@ -52,7 +52,7 @@ export function postIdc(data) {
 
 export function getIdc(query) {
   return request({
-    url: apiURL.idcs,
+    url: apiuri.idcs,
     method: 'get',
     params: query
   })
@@ -60,7 +60,7 @@ export function getIdc(query) {
 
 export function putIdc(id, data) {
   return request({
-    url: apiURL.idcs + id + '/',
+    url: apiuri.idcs + id + '/',
     method: 'put',
     data
   })
@@ -68,7 +68,7 @@ export function putIdc(id, data) {
 
 export function deleteIdc(id) {
   return request({
-    url: apiURL.idcs + id + '/',
+    url: apiuri.idcs + id + '/',
     method: 'delete'
   })
 }

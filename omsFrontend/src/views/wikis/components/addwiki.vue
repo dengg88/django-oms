@@ -26,8 +26,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import { getConversionTime } from '@/utils'
-import { postUpload } from 'api/tool'
-import { getTickettype } from 'api/workticket'
+import { postUpload } from '@/api/tool'
+import { getTickettype } from '@/api/workticket'
 import { postWiki } from 'api/wiki'
 
 export default {
