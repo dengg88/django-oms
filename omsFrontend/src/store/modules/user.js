@@ -73,9 +73,9 @@ const user = {
         }
         getUserInfo(data).then(response => {
           const data = response.data[0]
-          commit('setGroups', data.groups)
           commit('setAvatar', data.avatar)
-          commit('setRole', data.role)
+          commit('setGroups', data.groups)
+          // commit('setRole', data.role)
           resolve(response)
         }).catch(error => {
           console.log(error)
