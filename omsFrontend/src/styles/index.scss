@@ -238,7 +238,15 @@ code {
 }
 
 .svg-container {
-  .fa-icon{
-    color: #bbbbbb;
+  padding: 6px 5px 6px 9px !important;
+
+  .fa-icon {
+    color: #d3ec1b;
   }
+}
+
+.navbar-icon .fa-icon {
+  cursor: pointer;
+  font-size: 18px;
+  vertical-align: middle;
 }

@@ -54,7 +54,7 @@ export default {
           return new RegExp(oldVal, 'i').test(text) && !/Chalk Variables/.test(text)
         })
       styles.forEach(style => {
-        const { innerText } = style
+        const {innerText} = style
         if (typeof innerText !== 'string') return
         style.innerText = this.updateStyle(innerText, originalCluster, themeCluster)
       })
@@ -143,9 +143,9 @@ export default {
 
 <style>
 .theme-picker .el-color-picker__trigger {
-  margin-top: 12px;
-  height: 26px!important;
-  width: 26px!important;
+  margin-top: 10px;
+  height: 30px!important;
+  width: 30px!important;
   padding: 2px;
 }
 

@@ -1,7 +1,12 @@
 <template>
   <div class="login-container">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on"
-             label-position="left">
+    <el-form
+      ref="loginForm"
+      :model="loginForm"
+      :rules="loginRules"
+      class="login-form"
+      auto-complete="on"
+      label-position="left">
       <div class="title-container">
         <h3 class="title">
           {{ $t('login.title') }}
@@ -11,7 +16,9 @@
 
       <el-form-item prop="username">
         <span class="svg-container">
-          <icon name="user" scale="1" />
+          <icon
+            name="user"
+            scale="1" />
         </span>
         <el-input
           v-model="loginForm.username"
@@ -24,7 +31,9 @@
 
       <el-form-item prop="password">
         <span class="svg-container">
-          <icon name="key" scale="1" />
+          <icon
+            name="key"
+            scale="1" />
         </span>
         <el-input
           v-model="loginForm.password"
@@ -34,19 +43,34 @@
           auto-complete="on"
           @keyup.enter.native="handleLogin"
         />
-        <span class="svg-container show-pwd" @click="showPwd">
-          <icon :name="passwordType === 'password' ? 'eye' : 'eye-slash'" scale="1"/>
+        <span
+          class="svg-container show-pwd"
+          @click="showPwd">
+          <icon
+            :name="passwordType === 'password' ? 'eye' : 'eye-slash'"
+            scale="1"/>
         </span>
       </el-form-item>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;"
-                 @click.native.prevent="handleLogin">
+      <el-button
+        :loading="loading"
+        type="primary"
+        style="width:100%;margin-bottom:30px;"
+        @click.native.prevent="handleLogin">
         {{ $t('login.logIn') }}
       </el-button>
     </el-form>
 
-    <el-tooltip effect="dark" content="切换背景" placement="top">
-      <el-button class="qie" type="primary" size="mini" icon="el-icon-refresh" @click="changeBg"></el-button>
+    <el-tooltip
+      effect="dark"
+      content="切换背景"
+      placement="top">
+      <el-button
+        class="qie"
+        type="primary"
+        size="mini"
+        icon="el-icon-refresh"
+        @click="changeBg"/>
     </el-tooltip>
   </div>
 </template>
@@ -111,7 +135,7 @@
             this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
               this.loading = false
               // this.$router.push(this.$route.query.redirect || '/')
-              this.$router.push({ path: this.redirect || '/' })
+              this.$router.push({path: this.redirect || '/'})
             }).catch(() => {
               this.loading = false
             })
@@ -245,10 +269,6 @@
     }
     .show-pwd {
       position: absolute;
-      right: 10px;
-      top: 7px;
-      font-size: 16px;
-      color: $dark_gray;
       cursor: pointer;
       user-select: none;
     }

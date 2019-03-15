@@ -1,6 +1,6 @@
 import {loginByUsername, getUserInfo, getRouterInfo} from '@/api/login'
 import {getToken, setToken, removeToken, setUser, getUser} from '@/utils/auth'
-import { super_group } from '@/config'
+import {super_group} from '@/config'
 
 const user = {
   state: {
@@ -24,7 +24,7 @@ const user = {
       state.username = username
       setUser(username)
     },
-    setAvator: (state, avatar) => {
+    setAvatar: (state, avatar) => {
       state.avatar = avatar
     },
     setGroups: (state, groups) => {
@@ -44,7 +44,7 @@ const user = {
     },
     setPermMenus: (state, permMenus) => {
       state.roles = permMenus
-    },
+    }
   },
 
   actions: {
@@ -53,8 +53,6 @@ const user = {
       userInfo.username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
         loginByUsername(userInfo).then(response => {
-          const cur_date = new Date().getTime()
-          localStorage.setItem('token_time', cur_date)
           commit('setToken', response.data.token)
           commit('setUsername', userInfo.username)
           commit('setHasGetInfo', true)
@@ -69,6 +67,25 @@ const user = {
 
     // 获取用户信息
     GetUserInfo({commit, state}) {
+      return new Promise((resolve, reject) => {
+        const data = {
+          username: state.username
+        }
+        getUserInfo(data).then(response => {
+          const data = response.data[0]
+          commit('setGroups', data.groups)
+          commit('setAvatar', data.avatar)
+          commit('setRole', data.role)
+          resolve(response)
+        }).catch(error => {
+          console.log(error)
+          reject(error)
+        })
+      })
+    },
+
+    // 获取用户路由权限
+    GetUserRouterInfo({commit, state}) {
       return new Promise((resolve, reject) => {
         const data = {
           username: state.username

@@ -38,21 +38,9 @@ router.register(r'usermenuperms', UserMenuPermsViewSet)
 router.register(r'userhostperms', UserHostPermsViewSet)
 router.register(r'userwikiperms', UserWikiPermsViewSet)
 
-# from threepay.views import (PlatformViewSet, MerchantViewSet, ThreePayEnclosureViewSet, PayChannelViewSet,
-#                             PayChannelNameViewSet, ThreePayCommentViewSet, PlatformPayChannelViewSet)
-#
-# router.register(r'platforms', PlatformViewSet)
-# router.register(r'merchants', MerchantViewSet)
-# router.register(r'threepayenclosures', ThreePayEnclosureViewSet)
-# router.register(r'paychannels', PayChannelViewSet)
-# router.register(r'paychannelnames', PayChannelNameViewSet)
-# router.register(r'threepaycomments', ThreePayCommentViewSet)
-# router.register(r'platformpaychannels', PlatformPayChannelViewSet)
-
-from wikis.views import WikiViewSet, OpsWikiViewSet
+from wikis.views import WikiViewSet
 
 router.register(r'wikis', WikiViewSet)
-router.register(r'opswikis', OpsWikiViewSet)
 
 from hosts.views import HostViewSet, IdcViewSet, HostGroupViewSet
 

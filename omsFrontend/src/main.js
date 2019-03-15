@@ -19,10 +19,14 @@ import './permission' // permission control
 import * as filters from './filters' // global filters
 
 /* icon */
+import 'vue-awesome/icons/flag'
 import 'vue-awesome/icons'
-import Icon from 'vue-awesome/components/Icon'
-Vue.component('icon', Icon)
-import 'font-awesome/css/font-awesome.min.css'
+import vIcon from 'vue-awesome/components/Icon'
+Vue.component('icon', vIcon)
+
+/* iconfont */
+// import Icon from 'vue-icon'
+// Vue.use(Icon, 'icon')
 
 /* markdown */
 import mavonEditor from 'mavon-editor'

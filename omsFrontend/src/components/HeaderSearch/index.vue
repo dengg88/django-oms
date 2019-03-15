@@ -1,6 +1,11 @@
 <template>
-  <div :class="{'show':show}" class="header-search">
-    <svg-icon class-name="search-icon" icon-class="search" @click="click" />
+  <div
+    :class="{'show':show}"
+    class="navbar-icon header-search">
+    <icon
+      name="search"
+      scale="1.5"
+      @click="click" />
     <el-select
       ref="headerSearchSelect"
       v-model="search"
@@ -11,7 +16,11 @@
       placeholder="Search"
       class="header-search-select"
       @change="change">
-      <el-option v-for="item in options" :key="item.path" :value="item" :label="item.title.join(' > ')"/>
+      <el-option
+        v-for="item in options"
+        :key="item.path"
+        :value="item"
+        :label="item.title.join(' > ')"/>
     </el-select>
   </div>
 </template>
@@ -149,12 +158,6 @@ export default {
 <style lang="scss" scoped>
 .header-search {
   font-size: 0 !important;
-
-  .search-icon {
-    cursor: pointer;
-    font-size: 18px;
-    vertical-align: middle;
-  }
 
   .header-search-select {
     font-size: 18px;

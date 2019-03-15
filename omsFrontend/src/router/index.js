@@ -66,10 +66,10 @@ export const baseRouterMap = [
       {
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
-        meta: {title: 'dashboard', icon: 'tachometer-alt', noCache: true, affix: true}
+        meta: {title: 'dashboard', icon: 'home', noCache: true, affix: true}
       }
     ]
-  },
+  }
 ]
 
 export default new Router({
@@ -84,7 +84,7 @@ import deployjobRouter from './modules/deployjobs'
 
 export const asyncRouterMap = [
   workticketRouter,
-  deployjobRouter,
+  deployjobRouter
   // {
   //   title: '用户管理',
   //   path: '/users',

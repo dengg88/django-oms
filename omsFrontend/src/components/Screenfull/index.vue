@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <svg-icon :icon-class="isFullscreen?'exit-fullscreen':'fullscreen'" @click="click" />
+  <div class="navbar-icon">
+    <icon
+      :name="isFullscreen?'compress-arrows-alt':'arrows-alt'"
+      scale="1.5"
+      @click="click" />
   </div>
 </template>
 
