@@ -6,12 +6,6 @@ Vue.use(Router)
 /* Layout */
 import Layout from '@/views/layout/Layout'
 
-/* Router Modules */
-import componentsRouter from './modules/components'
-import chartsRouter from './modules/charts'
-import treeTableRouter from './modules/tree-table'
-import nestedRouter from './modules/nested'
-
 /** note: sub-menu only appear when children.length>=1
  *  detail see  https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
  **/
@@ -84,63 +78,13 @@ export default new Router({
   routes: baseRouterMap
 })
 
+/* Router Modules */
+import workticketRouter from './modules/workticket'
+import deployjobRouter from './modules/deployjobs'
+
 export const asyncRouterMap = [
-  {
-    name: '工单系统',
-    path: '/worktickets',
-    component: Layout,
-    redirect: 'worktickets',
-    meta: {title: 'workticket', icon: 'leaf'},
-    children: [
-      {
-        path: 'worktickets',
-        component: () => import(('@/views/worktickets/worktickets')),
-        name: '工单列表',
-        meta: {title: 'worktickets'}
-      },
-      {
-        path: 'tickettype',
-        component: () => import(('@/views/worktickets/tickettype')),
-        name: '工单类型',
-        meta: {title: 'tickettype'}
-      },
-      {
-        path: 'addworkticket',
-        hidden: true,
-        component: () => import(('@/views/worktickets/components/addworkticket')),
-        name: '添加工单',
-        meta: {title: 'addworkticket'}
-      },
-      {
-        path: 'viewworkticket/:pid',
-        hidden: true,
-        component: () => import(('@/views/worktickets/components/viewworkticket')),
-        name: '查看工单',
-        meta: {title: 'viewworkticket'}
-      },
-      {
-        path: 'editworkticket/:pid',
-        hidden: true,
-        component: () => import(('@/views/worktickets/components/editworkticket')),
-        name: '编辑工单',
-        meta: {title: 'editworkticket'}
-      }
-    ]
-  },
-  // {
-  //   title: '发布系统',
-  //   path: '/jobs',
-  //   component: Layout,
-  //   icon: 'tasks',
-  //   redirect: 'jobs',
-  //   children: [
-  //     { path: 'jobs', component: () => import(('@/views/jobs/jobs')), title: '项目列表' },
-  //     { path: 'jobtickets', component: () => import(('@/views/jobs/jobtickets')), title: '上线申请' },
-  //     { path: 'editjob/:job_id', hidden: true, component: () => import(('@/views/jobs/components/editjob')), title: '编辑项目' },
-  //     { path: 'runjob/:job_id', hidden: true, component: () => import(('@/views/jobs/components/runjob')), title: '构建项目' },
-  //     { path: 'sqltickets', component: () => import(('@/views/jobs/sqltickets')), title: 'SQL执行申请' }
-  //   ]
-  // },
+  workticketRouter,
+  deployjobRouter,
   // {
   //   title: '用户管理',
   //   path: '/users',
