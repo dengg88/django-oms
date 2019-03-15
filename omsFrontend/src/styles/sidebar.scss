@@ -48,7 +48,7 @@
       overflow: hidden;
     }
 
-    .svg-icon {
+    .fa-icon {
       margin-right: 16px;
     }
 
@@ -90,7 +90,7 @@
       margin-left: 54px;
     }
 
-    .svg-icon {
+    .fa-icon {
       margin-right: 0px;
     }
 
@@ -100,7 +100,7 @@
 
       .el-tooltip {
         padding: 0 !important;
-        .svg-icon {
+        .fa-icon {
           margin-left: 20px;
         }
       }
@@ -111,7 +111,7 @@
 
       &>.el-submenu__title {
         padding: 0 !important;
-        .svg-icon {
+        .fa-icon {
           margin-left: 20px;
         }
 
@@ -172,7 +172,7 @@
 // when menu collapsed
 .el-menu--vertical {
   &>.el-menu {
-    .svg-icon {
+    .fa-icon {
       margin-right: 16px;
     }
   }

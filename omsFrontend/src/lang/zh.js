@@ -1,9 +1,9 @@
 export default {
   route: {
     dashboard: '首页',
-    introduction: '简述',
-    documentation: '文档',
-    guide: '引导页',
+    workticket: '工单系统',
+    worktickets: '工单列表',
+    tickettype: '工单类型',
     permission: '权限测试页',
     pagePermission: '页面权限',
     directivePermission: '指令权限',

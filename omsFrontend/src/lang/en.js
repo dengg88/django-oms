@@ -1,9 +1,9 @@
 export default {
   route: {
     dashboard: 'Dashboard',
-    introduction: 'Introduction',
-    documentation: 'Documentation',
-    guide: 'Guide',
+    workticket: 'Workticket',
+    worktickets: 'worktickets',
+    tickettype: 'tickettype',
     permission: 'Permission',
     pagePermission: 'Page Permission',
     directivePermission: 'Directive Permission',

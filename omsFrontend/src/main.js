@@ -18,6 +18,23 @@ import './permission' // permission control
 
 import * as filters from './filters' // global filters
 
+/* icon */
+import 'vue-awesome/icons'
+import Icon from 'vue-awesome/components/Icon'
+Vue.component('icon', Icon)
+import 'font-awesome/css/font-awesome.min.css'
+
+/* markdown */
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+Vue.use(mavonEditor)
+
+import 'prismjs/themes/prism-tomorrow.css'
+
+/* calendar */
+import fullCalendar from 'vue-fullcalendar'
+Vue.component('full-calendar', fullCalendar)
+
 Vue.use(Element, {
   size: Cookies.get('size') || 'medium', // set element-ui default size
   i18n: (key, value) => i18n.t(key, value)

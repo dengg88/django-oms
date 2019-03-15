@@ -7,6 +7,13 @@ const path = require('path')
 module.exports = {
   title: '运维管理系统',
   super_group: 'admin',
+
+  // pagination
+  LIMIT: 10,
+  pagesize: [10, 20, 50, 100],
+  pageformat: "total, prev, pager, next, sizes",
+
+  // env
   dev: {
     // Paths
     assetsSubDirectory: 'static',

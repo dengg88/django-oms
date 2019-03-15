@@ -100,7 +100,7 @@
             :current-page.sync="currentPage"
             :page-sizes="pagesize"
             :page-size="listQuery.limit"
-            layout="total, sizes, prev, pager, next, jumper"
+            :layout="pageformat"
             :total="tabletotal">
           </el-pagination>
         </div>
@@ -123,125 +123,126 @@
 </template>
 
 <script>
-import { getWorkticket, patchWorkticket } from '@/api/workticket'
-import { LIMIT, pagesize } from '@/config'
-import { mapGetters } from 'vuex'
+  import {getWorkticket, patchWorkticket} from '@/api/workticket'
+  import {LIMIT, pagesize, pageformat} from '@/config'
+  import {mapGetters} from 'vuex'
 
-export default {
-  components: {},
-  data() {
-    return {
-      tableData: [],
-      tabletotal: 0,
-      currentPage: 1,
-      pagesize: pagesize,
-      rowdata: {
-        ticket_status: '1',
-        action_user: localStorage.getItem('username')
-      },
-      STATUS_TEXT: { '0': '未接收', '1': '正在处理', '2': '已完成', '3': '搁置' },
-      STATUS_TYPE: { '0': 'danger', '1': 'success', '2': 'info', '3': 'warning' },
-      listQuery: {
-        limit: LIMIT,
-        offset: '',
-        pid: '',
-        ticket_status: '',
-        create_user__username: '',
-        action_user__username: '',
-        search: '',
-        ordering: ''
-      },
-      workticketlist_btn_add: false,
-      workticketlist_btn_change_status: false,
-      btnstatus: true,
-      show_status: false
-    }
-  },
-
-  computed: {
-    ...mapGetters([
-      'role',
-      'elements',
-      'username'
-    ])
-  },
-
-  created() {
-    this.fetchData()
-    this.workticketlist_btn_add = this.elements['工单列表-新建工单按钮']
-    this.workticketlist_btn_change_status = this.elements['工单列表-更改工单状态按钮']
-  },
-
-  methods: {
-    fetchData() {
-      getWorkticket(this.listQuery).then(response => {
-        this.tableData = response.data.results
-        this.tabletotal = response.data.count
-      })
-    },
-    searchClick() {
-      this.fetchData()
-    },
-    handleSizeChange(val) {
-      this.listQuery.limit = val
-      this.fetchData()
-    },
-    handleCurrentChange(val) {
-      this.listQuery.offset = (val - 1) * LIMIT
-      this.fetchData()
-    },
-    changeStatus() {
-      this.fetchData()
-    },
-    showMeCreate() {
-      this.listQuery.create_user__username = localStorage.getItem('username')
-      this.listQuery.action_user__username = ''
-      this.fetchData()
-    },
-    showMeAction() {
-      this.listQuery.action_user__username = localStorage.getItem('username')
-      this.listQuery.create_user__username = ''
-      this.fetchData()
-    },
-    showAllTicket() {
-      this.listQuery.create_user__username = ''
-      this.listQuery.action_user__username = ''
-      this.listQuery.search = ''
-      this.listQuery.ticket_status = ''
-      this.fetchData()
-    },
-    handleSelectionChange(val) {
-      this.selectId = []
-      for (var i = 0, len = val.length; i < len; i++) {
-        this.selectId.push(val[i].id)
-      }
-      if (this.selectId.length > 0) {
-        this.btnstatus = false
-      } else {
-        this.btnstatus = true
+  export default {
+    components: {},
+    data() {
+      return {
+        tableData: [],
+        tabletotal: 0,
+        currentPage: 1,
+        pagesize: pagesize,
+        pageformat: pageformat,
+        rowdata: {
+          ticket_status: '1',
+          action_user: localStorage.getItem('username')
+        },
+        STATUS_TEXT: {'0': '未接收', '1': '正在处理', '2': '已完成', '3': '搁置'},
+        STATUS_TYPE: {'0': 'danger', '1': 'success', '2': 'info', '3': 'warning'},
+        listQuery: {
+          limit: LIMIT,
+          offset: '',
+          pid: '',
+          ticket_status: '',
+          create_user__username: '',
+          action_user__username: '',
+          search: '',
+          ordering: ''
+        },
+        workticketlist_btn_add: false,
+        workticketlist_btn_change_status: false,
+        btnstatus: true,
+        show_status: false
       }
     },
-    changeForm() {
-      for (var i = 0, len = this.selectId.length; i < len; i++) {
-        patchWorkticket(this.selectId[i], this.rowdata).then(response => {
-          delete this.selectId[i]
+
+    computed: {
+      ...mapGetters([
+        'role',
+        'elements',
+        'username'
+      ])
+    },
+
+    created() {
+      this.fetchData()
+      this.workticketlist_btn_add = this.elements['工单列表-新建工单按钮']
+      this.workticketlist_btn_change_status = this.elements['工单列表-更改工单状态按钮']
+    },
+
+    methods: {
+      fetchData() {
+        getWorkticket(this.listQuery).then(response => {
+          this.tableData = response.data.results
+          this.tabletotal = response.data.count
         })
+      },
+      searchClick() {
+        this.fetchData()
+      },
+      handleSizeChange(val) {
+        this.listQuery.limit = val
+        this.fetchData()
+      },
+      handleCurrentChange(val) {
+        this.listQuery.offset = (val - 1) * LIMIT
+        this.fetchData()
+      },
+      changeStatus() {
+        this.fetchData()
+      },
+      showMeCreate() {
+        this.listQuery.create_user__username = localStorage.getItem('username')
+        this.listQuery.action_user__username = ''
+        this.fetchData()
+      },
+      showMeAction() {
+        this.listQuery.action_user__username = localStorage.getItem('username')
+        this.listQuery.create_user__username = ''
+        this.fetchData()
+      },
+      showAllTicket() {
+        this.listQuery.create_user__username = ''
+        this.listQuery.action_user__username = ''
+        this.listQuery.search = ''
+        this.listQuery.ticket_status = ''
+        this.fetchData()
+      },
+      handleSelectionChange(val) {
+        this.selectId = []
+        for (var i = 0, len = val.length; i < len; i++) {
+          this.selectId.push(val[i].id)
+        }
+        if (this.selectId.length > 0) {
+          this.btnstatus = false
+        } else {
+          this.btnstatus = true
+        }
+      },
+      changeForm() {
+        for (var i = 0, len = this.selectId.length; i < len; i++) {
+          patchWorkticket(this.selectId[i], this.rowdata).then(response => {
+            delete this.selectId[i]
+          })
+        }
+        setTimeout(this.fetchData, 2000)
+        this.show_status = false
+      },
+      handleSortChange(val) {
+        if (val.order === 'ascending') {
+          this.listQuery.ordering = val.prop
+        } else if (val.order === 'descending') {
+          this.listQuery.ordering = '-' + val.prop
+        } else {
+          this.listQuery.ordering = ''
+        }
+        this.fetchData()
       }
-      setTimeout(this.fetchData, 2000)
-      this.show_status = false
-    },
-    handleSortChange(val) {
-      if (val.order === 'ascending') {
-        this.listQuery.ordering = val.prop
-      } else if (val.order === 'descending') {
-        this.listQuery.ordering = '-' + val.prop
-      } else {
-        this.listQuery.ordering = ''
-      }
-      this.fetchData()
     }
   }
-}
 </script>
 
 <style lang='scss'>

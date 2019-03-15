@@ -9,12 +9,15 @@ SK_ACOUNT = {
     'sk_user': 'itimor@oms.com',
     'sk_pass': 'xxxx'
 }
-#SK = Skype(SK_ACOUNT["sk_user"], SK_ACOUNT["sk_pass"])
+# SK = Skype(SK_ACOUNT["sk_user"], SK_ACOUNT["sk_pass"])
 SK = 'sk'
+
 
 def skype_bot(user, content):
     chat = SK.chats[user]
     chat.sendMsg(content)
+    for chatId in chat.recent():
+        print(chatId)
 
 
 if __name__ == '__main__':
