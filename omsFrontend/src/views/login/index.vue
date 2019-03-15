@@ -34,8 +34,8 @@
           auto-complete="on"
           @keyup.enter.native="handleLogin"
         />
-        <span class="show-pwd" @click="showPwd">
-          <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"/>
+        <span class="svg-container show-pwd" @click="showPwd">
+          <icon :name="passwordType === 'password' ? 'eye' : 'eye-slash'" scale="1"/>
         </span>
       </el-form-item>
 
