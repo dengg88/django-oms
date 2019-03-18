@@ -39,8 +39,16 @@
             prop="email"
             label="Email"/>
           <el-table-column
-            prop="skype"
-            label="Skype"/>
+            prop="avatar"
+            label="Avatar">
+            <template slot-scope="scope">
+              <div class="avatar-wrapper">
+                <img
+                  :src="scope.row.avatar+'?imageView2/1/w/80/h/80'"
+                  class="user-avatar">
+              </div>
+            </template>
+          </el-table-column>
           <el-table-column
             prop="groups"
             label="所在组">
@@ -184,5 +192,12 @@
 </script>
 
 <style lang='scss'>
-
+  .avatar-wrapper {
+    text-align: center;
+    .user-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 10px;
+    }
+  }
 </style>

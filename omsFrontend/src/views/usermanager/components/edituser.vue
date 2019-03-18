@@ -16,7 +16,7 @@
     </el-form-item>
     <el-form-item
       label="Avatar"
-      prop="email">
+      prop="avatar">
       <el-input v-model="rowdata.avatar"/>
     </el-form-item>
     <el-form-item
@@ -81,8 +81,8 @@
           email: [
             {required: true, type: 'email', message: '请输入正确的Email地址', trigger: 'blur'}
           ],
-          skype: [
-            {required: true, message: '请输入正确的Skype地址', trigger: 'blur'}
+          avatar: [
+            {required: true, message: '请输入正确的avatar地址', trigger: 'blur'}
           ],
           group: [
             {required: true, type: 'array', message: '请选择用户分组', trigger: 'change'}

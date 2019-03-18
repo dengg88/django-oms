@@ -15,9 +15,9 @@
       <el-input v-model="ruleForm.email"/>
     </el-form-item>
     <el-form-item
-      label="Skype"
-      prop="email">
-      <el-input v-model="ruleForm.skype"/>
+      label="Avatar"
+      prop="avatar">
+      <el-input v-model="ruleForm.avatar"/>
     </el-form-item>
     <el-form-item
       label="用户分组"
@@ -72,7 +72,7 @@ export default {
       ruleForm: {
         username: '',
         email: '',
-        skype: '',
+        avatar: '',
         is_active: '',
         group: '',
         roles: '',
@@ -85,8 +85,8 @@ export default {
         email: [
           {required: true, type: 'email', message: '请输入正确的Email地址', trigger: 'blur'}
         ],
-        skype: [
-          {required: true, message: '请输入正确的Skype地址', trigger: 'blur'}
+        avatar: [
+          {required: true, message: '请输入正确的avatar地址', trigger: 'blur'}
         ],
         group: [
           {required: true, message: '请选择用户分组', trigger: 'change'}
