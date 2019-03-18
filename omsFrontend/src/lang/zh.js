@@ -1,6 +1,15 @@
 export default {
   route: {
     dashboard: '首页',
+    usermanager: '用户管理',
+    users: '用户列表',
+    usergroups: '用户组列表',
+    roles: '角色列表',
+    permmanager: '权限管理',
+    menus: '菜单管理',
+    menuperm: '菜单权限',
+    hostperm: '主机权限',
+    wikiperm: '文档权限',
     workticket: '工单系统',
     worktickets: '工单列表',
     tickettype: '工单类型',
@@ -8,7 +17,7 @@ export default {
     deployjobs: '项目列表',
     jobtickets: '发布申请',
     runjob: '执行发布',
-    sqltickets: 'sql执行申请',
+    sqltickets: 'sql执行申请'
   },
   navbar: {
     logOut: '退出登录',

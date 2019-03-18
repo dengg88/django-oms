@@ -1,19 +1,34 @@
 <template>
-  <div class="components-container" style='height:100vh'>
+  <div
+    class="components-container"
+    style="height:100vh">
     <el-row :gutter="20">
       <el-col :span="6">
         <el-card>
           <div slot="header">
             <span class="card-title">用户组列表</span>
             <el-button-group>
-              <el-button type="success" plain size="mini" @click="add_menu=true">
+              <el-button
+                type="success"
+                plain
+                size="mini"
+                @click="add_menu=true">
                 添加
               </el-button>
-              <el-button type="primary" plain size="mini" v-if="select_group" @click="show_menus=true">
+              <el-button
+                v-if="select_group"
+                type="primary"
+                plain
+                size="mini"
+                @click="show_menus=true">
                 编辑
               </el-button>
-              <el-button type="danger" plain size="mini" v-if="select_group&&show_menus"
-                         @click="putFormSubmit(menuform.id)">
+              <el-button
+                v-if="select_group&&show_menus"
+                type="danger"
+                plain
+                size="mini"
+                @click="putFormSubmit(menuform.id)">
                 保存
               </el-button>
             </el-button-group>
@@ -23,8 +38,7 @@
               :data="routerData"
               :props="routerprops"
               accordion
-              @node-click="handleGroupClick">
-            </el-tree>
+              @node-click="handleGroupClick"/>
           </div>
         </el-card>
       </el-col>
@@ -34,17 +48,16 @@
             <span class="card-title">菜单列表</span>
           </div>
           <el-tree
+            ref="grouptree"
             :data="firstData"
             :props="menuprops"
+            :load="fetchNodeData"
             node-key="title"
             default-expand-all
-            ref="grouptree"
-            :load="fetchNodeData"
             lazy
             show-checkbox
             @check-change="handleCheckChange"
-            @node-click="handleNodeClick">
-          </el-tree>
+            @node-click="handleNodeClick"/>
         </el-card>
       </el-col>
       <el-col :span="6">
@@ -53,7 +66,10 @@
             <span class="card-title">已有按钮列表</span>
           </div>
           <ul>
-            <li class="has_element" v-for="item in menuform.elements" :key="item.id">{{item}}</li>
+            <li
+              v-for="item in menuform.elements"
+              :key="item.id"
+              class="has_element">{{ item }}</li>
           </ul>
         </el-card>
       </el-col>
@@ -62,18 +78,33 @@
           <div slot="header">
             <span class="card-title">资源按钮列表</span>
           </div>
-          <div class="head-lavel">
-          </div>
+          <div class="head-lavel"/>
           <div>
-            <el-table :data="elementData" border style="width: 100%">
-              <el-table-column prop='name' label='资源名' sortable='custom'></el-table-column>
-              <el-table-column label="操作" v-if="show_menus">
+            <el-table
+              :data="elementData"
+              border
+              style="width: 100%">
+              <el-table-column
+                prop="name"
+                label="资源名"
+                sortable="custom"/>
+              <el-table-column
+                v-if="show_menus"
+                label="操作">
                 <template slot-scope="scope">
-                  <el-button v-if="menuform.elements.indexOf(scope.row.name)<0" type="success" plain size="mini"
-                             @click="menuform.elements.push(scope.row.name)">添加
+                  <el-button
+                    v-if="menuform.elements.indexOf(scope.row.name)<0"
+                    type="success"
+                    plain
+                    size="mini"
+                    @click="menuform.elements.push(scope.row.name)">添加
                   </el-button>
-                  <el-button v-if="menuform.elements.indexOf(scope.row.name)>-1" type="danger" plain size="mini"
-                             @click="menuform.elements.remove(scope.row.name)">移除
+                  <el-button
+                    v-if="menuform.elements.indexOf(scope.row.name)>-1"
+                    type="danger"
+                    plain
+                    size="mini"
+                    @click="menuform.elements.remove(scope.row.name)">移除
                   </el-button>
                 </template>
               </el-table-column>
@@ -82,15 +113,30 @@
         </el-card>
       </el-col>
     </el-row>
-    <el-dialog :visible.sync="add_menu" style="z-index: 1024">
-      <el-form :model="menuform" ref="addform" label-width="100px">
-        <el-form-item label="用户组" prop="group">
-          <el-select v-model="menuform.group" filterable placeholder="请选择用户分组">
-            <el-option v-for="item in groups" :key="item.name" :value="item.name"></el-option>
+    <el-dialog
+      :visible.sync="add_menu"
+      style="z-index: 1024">
+      <el-form
+        ref="addform"
+        :model="menuform"
+        label-width="100px">
+        <el-form-item
+          label="用户组"
+          prop="group">
+          <el-select
+            v-model="menuform.group"
+            filterable
+            placeholder="请选择用户分组">
+            <el-option
+              v-for="item in groups"
+              :key="item.name"
+              :value="item.name"/>
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="addFormSubmit('addform')">立即创建</el-button>
+          <el-button
+            type="primary"
+            @click="addFormSubmit('addform')">立即创建</el-button>
           <el-button @click="resetForm('addform')">重置</el-button>
         </el-form-item>
       </el-form>
@@ -99,10 +145,10 @@
 </template>
 
 <script>
-import { getFirstmenus, getSecondmenus, getMenumetas } from '@/api/menu'
-import { getMenuPerm, postMenuPerm, putMenuPerm } from '@/api/perm'
-import { getGroup } from '@/api/user'
-import { LIMIT } from '@/config'
+import {getFirstmenus, getSecondmenus, getMenumetas} from '@/api/menu'
+import {getMenuPerm, postMenuPerm, putMenuPerm} from '@/api/perm'
+import {getGroup} from '@/api/user'
+import {LIMIT} from '@/config'
 
 export default {
   components: { },
@@ -164,7 +210,7 @@ export default {
     },
     fetchNodeData(node, resolve) {
       if (node.level === 0) {
-        return resolve([{ name: 'region' }])
+        return resolve([{name: 'region'}])
       }
       if (node.level > 1) return resolve([])
 

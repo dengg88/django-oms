@@ -1,19 +1,36 @@
 <template>
-  <div class="components-container" style='height:100vh'>
+  <div
+    class="components-container"
+    style="height:100vh">
     <el-row :gutter="20">
       <el-col :span="8">
         <el-card>
           <div slot="header">
             <span class="card-title">菜单列表</span>
             <el-button-group>
-              <el-button type="success" plain size="mini" icon="plus" @click="handlerAdd">
+              <el-button
+                type="success"
+                plain
+                size="mini"
+                icon="plus"
+                @click="handlerAdd">
                 添加
               </el-button>
-              <el-button type="primary" plain size="mini" icon="edit" @click="handlerEdit">
+              <el-button
+                type="primary"
+                plain
+                size="mini"
+                icon="edit"
+                @click="handlerEdit">
                 编辑
               </el-button>
-              <el-button type="danger" plain size="mini" icon="delete" @click="handleDelete"
-                         disabled>
+              <el-button
+                type="danger"
+                plain
+                size="mini"
+                icon="delete"
+                disabled
+                @click="handleDelete">
                 删除
               </el-button>
             </el-button-group>
@@ -24,8 +41,7 @@
             :load="fetchNodeData"
             accordion
             lazy
-            @node-click="handleNodeClick">
-          </el-tree>
+            @node-click="handleNodeClick"/>
         </el-card>
       </el-col>
       <el-col :span="8">
@@ -36,113 +52,204 @@
               v-model="is_second"
               active-text="子菜单"
               inactive-text="父菜单"
-              @change="resetForm">
-            </el-switch>
+              @change="resetForm"/>
           </div>
-          <el-form label-width="80px" :model="menuform" ref="menuform">
-            <el-form-item v-if="is_second" label="父级菜单" prop="parent">
-              <el-select v-model="menuform.parent" placeholder="请选择父级菜单">
-                <el-option v-for="item in firstData" :key="item.id" :value="item.title"></el-option>
+          <el-form
+            ref="menuform"
+            :model="menuform"
+            label-width="80px">
+            <el-form-item
+              v-if="is_second"
+              label="父级菜单"
+              prop="parent">
+              <el-select
+                v-model="menuform.parent"
+                placeholder="请选择父级菜单">
+                <el-option
+                  v-for="item in firstData"
+                  :key="item.id"
+                  :value="item.title"/>
               </el-select>
             </el-form-item>
-            <el-form-item label="菜单标题" prop="title">
-              <el-input v-model="menuform.title" :disabled="formEdit" placeholder="请输入title"></el-input>
+            <el-form-item
+              label="菜单标题"
+              prop="title">
+              <el-input
+                v-model="menuform.title"
+                :disabled="formEdit"
+                placeholder="请输入title"/>
             </el-form-item>
-            <el-form-item label="菜单编码" prop="name">
-              <el-input v-model="menuform.name" :disabled="formEdit" placeholder="请输入name"></el-input>
+            <el-form-item
+              label="菜单编码"
+              prop="name">
+              <el-input
+                v-model="menuform.name"
+                :disabled="formEdit"
+                placeholder="请输入name"/>
             </el-form-item>
-            <el-form-item label="url路径" prop="path">
-              <el-input v-model="menuform.path" :disabled="formEdit" placeholder="请输入path"></el-input>
+            <el-form-item
+              label="url路径"
+              prop="path">
+              <el-input
+                v-model="menuform.path"
+                :disabled="formEdit"
+                placeholder="请输入path"/>
             </el-form-item>
-            <el-form-item label="前端组件" prop="component">
-              <el-input v-model="menuform.component" :disabled="formEdit" placeholder="请输入component"></el-input>
+            <el-form-item
+              label="前端组件"
+              prop="component">
+              <el-input
+                v-model="menuform.component"
+                :disabled="formEdit"
+                placeholder="请输入component"/>
             </el-form-item>
-            <el-form-item v-if="!is_second" label="图标" prop="icon">
-              <el-input v-model="menuform.icon" :disabled="formEdit" placeholder="请输入icon"></el-input>
+            <el-form-item
+              v-if="!is_second"
+              label="图标"
+              prop="icon">
+              <el-input
+                v-model="menuform.icon"
+                :disabled="formEdit"
+                placeholder="请输入icon"/>
             </el-form-item>
-            <el-form-item v-if="!is_second" label="redirect" prop="redirect">
-              <el-input v-model="menuform.redirect" :disabled="formEdit" placeholder="请输入redirect"></el-input>
+            <el-form-item
+              v-if="!is_second"
+              label="redirect"
+              prop="redirect">
+              <el-input
+                v-model="menuform.redirect"
+                :disabled="formEdit"
+                placeholder="请输入redirect"/>
             </el-form-item>
-            <el-form-item label="是否隐藏" prop="hidden">
-              <el-switch v-model="menuform.hidden" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
+            <el-form-item
+              label="是否隐藏"
+              prop="hidden">
+              <el-switch
+                v-model="menuform.hidden"
+                active-color="#13ce66"
+                inactive-color="#ff4949"/>
             </el-form-item>
             <el-form-item v-if="formStatus == 'update'&&!is_second">
-              <el-button type="primary" @click="putFirstFormSubmit(menuform.id)">更新</el-button>
+              <el-button
+                type="primary"
+                @click="putFirstFormSubmit(menuform.id)">更新</el-button>
               <el-button @click="onCancel">取消</el-button>
             </el-form-item>
             <el-form-item v-if="formStatus == 'update'&&is_second">
-              <el-button type="primary" @click="putSecondFormSubmit(menuform.id)">更新</el-button>
+              <el-button
+                type="primary"
+                @click="putSecondFormSubmit(menuform.id)">更新</el-button>
               <el-button @click="onCancel">取消</el-button>
             </el-form-item>
             <el-form-item v-if="formStatus == 'create'&&!is_second">
-              <el-button type="primary" @click="postFirstFormSubmit">保存</el-button>
+              <el-button
+                type="primary"
+                @click="postFirstFormSubmit">保存</el-button>
               <el-button @click="onCancel">取消</el-button>
             </el-form-item>
             <el-form-item v-if="formStatus == 'create'&&is_second">
-              <el-button type="primary" @click="postSecondFormSubmit">保存</el-button>
+              <el-button
+                type="primary"
+                @click="postSecondFormSubmit">保存</el-button>
               <el-button @click="onCancel">取消</el-button>
             </el-form-item>
           </el-form>
         </el-card>
       </el-col>
       <el-col :span="8">
-        <el-card v-if="is_second" class="box-card">
+        <el-card
+          v-if="is_second"
+          class="box-card">
           <div slot="header">
             <span class="card-title">资源按钮列表</span>
           </div>
           <div class="head-lavel">
             <div class="table-button">
-              <el-button type="primary" plain size="mini" icon="el-icon-plus" @click="add_element=true">新建</el-button>
+              <el-button
+                type="primary"
+                plain
+                size="mini"
+                icon="el-icon-plus"
+                @click="add_element=true">新建</el-button>
             </div>
             <div class="table-search">
               <el-input
-                placeholder="搜索 ..."
                 v-model="searchdata"
+                placeholder="搜索 ..."
                 @keyup.enter.native="searchClick">
-                <i class="el-icon-search el-input__icon" slot="suffix" @click="searchClick"></i>
+                <i
+                  slot="suffix"
+                  class="el-icon-search el-input__icon"
+                  @click="searchClick"/>
               </el-input>
             </div>
           </div>
           <div>
-            <el-table :data="elementData" border style="width: 100%">
-              <el-table-column prop='name' label='资源名' sortable='custom'></el-table-column>
+            <el-table
+              :data="elementData"
+              border
+              style="width: 100%">
+              <el-table-column
+                prop="name"
+                label="资源名"
+                sortable="custom"/>
               <el-table-column label="操作">
                 <template slot-scope="scope">
-                  <el-button type="danger" plain size="mini" icon="el-icon-close" @click="deleteMetaSubmit(scope.row.id)">删除</el-button>
+                  <el-button
+                    type="danger"
+                    plain
+                    size="mini"
+                    icon="el-icon-close"
+                    @click="deleteMetaSubmit(scope.row.id)">删除</el-button>
                 </template>
               </el-table-column>
             </el-table>
           </div>
           <div class="table-pagination">
             <el-pagination
-              @size-change="handleSizeChange"
-              @current-change="handleCurrentChange"
               :current-page.sync="currentPage"
               :page-sizes="pagesize"
               :page-size="limit"
+              :total="tabletotal"
               layout="prev, pager, next, sizes"
-              :total="tabletotal">
-            </el-pagination>
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"/>
           </div>
         </el-card>
       </el-col>
     </el-row>
 
     <el-dialog :visible.sync="add_element">
-      <el-form :model="elementform" ref="elementform" label-width="100px">
-        <el-form-item label="二级菜单" prop="parent">
-          <el-select v-model="elementform.parent" placeholder="请选择二级菜单">
-            <el-option v-for="item in secondData" :key="item.name" :value="item.title"></el-option>
+      <el-form
+        ref="elementform"
+        :model="elementform"
+        label-width="100px">
+        <el-form-item
+          label="二级菜单"
+          prop="parent">
+          <el-select
+            v-model="elementform.parent"
+            placeholder="请选择二级菜单">
+            <el-option
+              v-for="item in secondData"
+              :key="item.name"
+              :value="item.title"/>
           </el-select>
         </el-form-item>
-        <el-form-item label="菜单元素" prop="name">
-          <el-input v-model="elementform.name"></el-input>
+        <el-form-item
+          label="菜单元素"
+          prop="name">
+          <el-input v-model="elementform.name"/>
         </el-form-item>
-        <el-form-item label="元素code" prop="code">
-          <el-input v-model="elementform.code"></el-input>
+        <el-form-item
+          label="元素code"
+          prop="code">
+          <el-input v-model="elementform.code"/>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="postElementFormSubmit('elementform')">立即创建</el-button>
+          <el-button
+            type="primary"
+            @click="postElementFormSubmit('elementform')">立即创建</el-button>
           <el-button @click="resetElementForm('elementform')">重置</el-button>
         </el-form-item>
       </el-form>
@@ -163,8 +270,8 @@ import {
   putMenumetas,
   deleteMenumetas
 } from '@/api/menu'
-import { mapGetters } from 'vuex'
-import { LIMIT } from '@/config'
+import {mapGetters} from 'vuex'
+import {LIMIT} from '@/config'
 
 export default {
   components: {},
@@ -224,7 +331,7 @@ export default {
     },
     fetchNodeData(node, resolve) {
       if (node.level === 0) {
-        return resolve([{ name: 'region' }])
+        return resolve([{name: 'region'}])
       }
       if (node.level > 1) return resolve([])
 

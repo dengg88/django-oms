@@ -2,10 +2,13 @@
   <div
     :class="{'show':show}"
     class="navbar-icon header-search">
-    <icon
-      name="search"
-      scale="1.5"
-      @click="click" />
+    <el-button
+      type="text"
+      @click="click">
+      <icon
+        name="search"
+        scale="1.5"/>
+    </el-button>
     <el-select
       ref="headerSearchSelect"
       v-model="search"
@@ -13,7 +16,7 @@
       filterable
       default-first-option
       remote
-      placeholder="Search"
+      placeholder="Search..."
       class="header-search-select"
       @change="change">
       <el-option

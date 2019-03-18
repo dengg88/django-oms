@@ -3,26 +3,42 @@
     <div>
       <el-transfer
         v-model="value"
-        filterable
         :titles="['未选择', '已选择']"
         :button-texts="['向左走', '向右走']"
-        @change="handleChange"
-        :data="alldata">
-        <el-button type="info" class="transfer-footer" slot="left-footer" size="mini" @click="getData">重置</el-button>
+        :data="alldata"
+        filterable
+        @change="handleChange">
+        <el-button
+          slot="left-footer"
+          type="info"
+          class="transfer-footer"
+          size="mini"
+          @click="getData">重置</el-button>
       </el-transfer>
     </div>
   </div>
 </template>
 
 <script>
-import { getWiki } from '@/api/wiki'
+import {getWiki} from '@/api/wiki'
 export default {
-  props: ['selectdata'],
+  props: {
+      selectdata: {
+        type: Array,
+        default: () => ([])
+      }
+    },
   data() {
     return {
       alldata: [],
       value: this.selectdata,
       changedata: false
+    }
+  },
+  watch: {
+    // 监控rowdata值的变化，有变化立即刷新数据
+    selectdata() {
+      this.getData()
     }
   },
 
@@ -46,12 +62,6 @@ export default {
     },
     handleChange(value, direction, movedKeys) {
       this.$emit('getDatas', value)
-    }
-  },
-  watch: {
-    // 监控rowdata值的变化，有变化立即刷新数据
-    selectdata() {
-      this.getData()
     }
   }
 }

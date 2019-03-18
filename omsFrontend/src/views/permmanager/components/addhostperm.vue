@@ -1,25 +1,43 @@
 <template>
-  <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px">
-    <el-form-item label="用户组" prop="usergroups">
-      <el-select v-model="ruleForm.usergroups" placeholder="请选择用户组">
-        <el-option v-for="item in groups" :key="item.name" :value="item.name"></el-option>
+  <el-form
+    ref="ruleForm"
+    :model="ruleForm"
+    :rules="rules"
+    label-width="100px">
+    <el-form-item
+      label="用户组"
+      prop="usergroups">
+      <el-select
+        v-model="ruleForm.usergroups"
+        placeholder="请选择用户组">
+        <el-option
+          v-for="item in groups"
+          :key="item.name"
+          :value="item.name"/>
       </el-select>
     </el-form-item>
-    <el-form-item label="选择文档" prop="hosts">
-      <sesect-datas :selectdata="ruleForm.objs" @getDatas="getWikis"></sesect-datas>
+    <el-form-item
+      label="选择主机"
+      prop="hosts">
+      <sesect-hosts
+        :selecthost="ruleForm.objs"
+        @gethosts="getHosts"/>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+      <el-button
+        type="primary"
+        @click="submitForm('ruleForm')">立即创建</el-button>
+      <el-button @click="resetForm('ruleForm')">重置</el-button>
     </el-form-item>
   </el-form>
 </template>
 <script>
-import sesectDatas from './wikitransfer.vue'
-import { getGroup } from '@/api/user'
-import { postWikiPerm } from '@/api/perm'
+import sesectHosts from '@/views/components/hosttransfer.vue'
+import {getGroup} from '@/api/user'
+import {postHostPerm} from '@/api/perm'
 
 export default {
-  components: { sesectDatas },
+  components: {sesectHosts},
 
   data() {
     return {
@@ -29,11 +47,10 @@ export default {
       },
       rules: {
         usergroups: [
-          { required: true, message: '请输入一个正确的内容', trigger: 'blur' }
+          {required: true, message: '请输入一个正确的内容', trigger: 'blur'}
         ]
       },
-      groups: [],
-      allwikis: []
+      groups: []
     }
   },
   created() {
@@ -43,7 +60,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          postWikiPerm(this.ruleForm).then(response => {
+          postHostPerm(this.ruleForm).then(response => {
             this.$message({
               message: '恭喜你，添加成功',
               type: 'success'
@@ -63,7 +80,10 @@ export default {
         }
       })
     },
-    getWikis(data) {
+    resetForm(formName) {
+      this.$refs[formName].resetFields()
+    },
+    getHosts(data) {
       this.ruleForm.objs = data
     },
     getGroups() {

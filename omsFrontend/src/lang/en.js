@@ -1,6 +1,15 @@
 export default {
   route: {
     dashboard: 'Dashboard',
+    usermanager: 'UserManager',
+    users: 'Users',
+    usergroups: 'UserGroup',
+    roles: 'oles',
+    permmanager: 'PermManager',
+    menus: 'enus',
+    menuperm: 'enuperm',
+    hostperm: 'ostperm',
+    wikiperm: 'Wikiperm',
     workticket: 'Workticket',
     worktickets: 'worktickets',
     tickettype: 'tickettype',
@@ -8,7 +17,7 @@ export default {
     deployjobs: 'deployjobs',
     jobtickets: 'jobtickets',
     runjob: 'runjob',
-    sqltickets: 'sqltickets',
+    sqltickets: 'sqltickets'
   },
   navbar: {
     logOut: 'Log Out',

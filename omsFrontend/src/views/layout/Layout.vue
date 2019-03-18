@@ -1,6 +1,11 @@
 <template>
-  <div :class="classObj" class="app-wrapper">
-    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"/>
+  <div
+    :class="classObj"
+    class="app-wrapper">
+    <div
+      v-if="device==='mobile'&&sidebar.opened"
+      class="drawer-bg"
+      @click="handleClickOutside"/>
     <sidebar class="sidebar-container"/>
     <div class="main-container">
       <navbar/>
@@ -11,8 +16,7 @@
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain, TagsView } from './components'
-import ResizeMixin from './mixin/ResizeHandler'
+import {Navbar, Sidebar, AppMain, TagsView} from './components'
 
 export default {
   name: 'Layout',
@@ -22,7 +26,6 @@ export default {
     AppMain,
     TagsView
   },
-  mixins: [ResizeMixin],
   computed: {
     sidebar() {
       return this.$store.state.app.sidebar
@@ -41,16 +44,14 @@ export default {
   },
   methods: {
     handleClickOutside() {
-      this.$store.dispatch('closeSideBar', { withoutAnimation: false })
+      this.$store.dispatch('closeSideBar', {withoutAnimation: false})
     }
   }
 }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import "~@/styles/mixin.scss";
   .app-wrapper {
-    @include clearfix;
     position: relative;
     height: 100%;
     width: 100%;

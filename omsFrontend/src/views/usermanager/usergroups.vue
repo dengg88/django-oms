@@ -1,60 +1,83 @@
 <template>
-  <div class="components-container" style='height:100vh'>
+  <div
+    class="components-container"
+    style="height:100vh">
     <el-card>
       <div class="head-lavel">
         <div class="table-button">
-          <el-button type="primary" icon="el-icon-plus" @click="addGroup=true">新建</el-button>
+          <el-button
+            type="primary"
+            icon="el-icon-plus"
+            @click="addGroup=true">新建</el-button>
         </div>
         <div class="table-search">
           <el-input
-            placeholder="搜索 ..."
             v-model="listQuery.name"
+            placeholder="搜索 ..."
             @keyup.enter.native="searchClick">
-            <i class="el-icon-search el-input__icon" slot="suffix" @click="searchClick"></i>
+            <i
+              slot="suffix"
+              class="el-icon-search el-input__icon"
+              @click="searchClick"/>
           </el-input>
         </div>
       </div>
       <div>
-        <el-table :data='tableData' border style="width: 100%">
-          <el-table-column prop='name' label='组名'></el-table-column>
-          <el-table-column prop='desc' label='描述'></el-table-column>
+        <el-table
+          :data="tableData"
+          border
+          style="width: 100%">
+          <el-table-column
+            prop="name"
+            label="组名"/>
+          <el-table-column
+            prop="desc"
+            label="描述"/>
           <el-table-column label="操作">
             <template slot-scope="scope">
-              <el-button @click="showGroup(scope.row)" type="success" size="small">查看</el-button>
-              <el-button @click="deleteGroup(scope.row.id)" type="danger" size="small" disabled>删除</el-button>
+              <el-button
+                type="success"
+                size="small"
+                @click="showGroup(scope.row)">查看</el-button>
+              <el-button
+                type="danger"
+                size="small"
+                disabled
+                @click="deleteGroup(scope.row.id)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
       </div>
       <div class="table-pagination">
         <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
           :current-page.sync="currentPage"
           :page-sizes="pagesize"
           :page-size="listQuery.limit"
           :layout="pageformat"
-          :total="tabletotal">
-        </el-pagination>
+          :total="tabletotal"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"/>
       </div>
     </el-card>
     <el-dialog :visible.sync="addGroup">
-      <add-group @formdata="addGroupSubmit"></add-group>
+      <add-group @formdata="addGroupSubmit"/>
     </el-dialog>
-    <el-dialog :visible.sync="viewGroup" @close="closeViewForm">
-      <view-group :rowdata="rowdata"></view-group>
+    <el-dialog
+      :visible.sync="viewGroup"
+      @close="closeViewForm">
+      <view-group :rowdata="rowdata"/>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import { getGroup, postGroup, deleteGroup } from '@/api/user'
-import { LIMIT, pagesize, pageformat } from '@/config'
+import {getGroup, postGroup, deleteGroup} from '@/api/user'
+import {LIMIT, pagesize, pageformat} from '@/config'
 import addGroup from '../components/addgroup.vue'
 import viewGroup from './components/viewgroup.vue'
 
 export default {
-  components: { addGroup, viewGroup },
+  components: {addGroup, viewGroup},
   data() {
     return {
       tableData: [],

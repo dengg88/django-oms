@@ -1,68 +1,72 @@
 <template>
-  <div class="components-container" style='height:100vh'>
+  <div
+    class="components-container"
+    style="height:100vh">
     <el-row :gutter="20">
       <el-col :span="6">
-        <el-card class="box-card-component" style="margin-left:8px;">
-          <div slot="header" class="box-card-header">
-            <img src='https://wpimg.wallstcn.com/e7d23d71-cf19-4b90-a1cc-f56af8c0903d.png' width="340">
+        <el-card
+          class="box-card-component"
+          style="margin-left:8px;">
+          <div
+            slot="header"
+            class="box-card-header">
+            <img
+              src="https://wpimg.wallstcn.com/e7d23d71-cf19-4b90-a1cc-f56af8c0903d.png"
+              width="340">
             <div class="title">
-              <pan-thumb class="panThumb" :image="img">
+              <pan-thumb
+                :image="img"
+                class="panThumb">
                 <span style="color: #fa43ff">TB</span>
               </pan-thumb>
-              <mallki className='mallki-text' text='运维管理系统'></mallki>
+              <mallki
+                class-name="mallki-text"
+                text="运维管理系统"/>
             </div>
           </div>
 
           <div>
 
             <el-card class="box-card-card">
-              <div slot="header" class="clearfix">
+              <div
+                slot="header"
+                class="clearfix">
                 <span>已开发功能</span>
               </div>
-              <div class='progress-item'>
+              <div class="progress-item">
                 <span>工单系统</span>
-                <el-progress :percentage="100"></el-progress>
+                <el-progress :percentage="100"/>
               </div>
-              <div class='progress-item'>
-                <span>第三支付对接</span>
-                <el-progress :percentage="100"></el-progress>
-              </div>
-              <div class='progress-item'>
+              <div class="progress-item">
                 <span>文档系统</span>
-                <el-progress :percentage="100"></el-progress>
+                <el-progress :percentage="100"/>
               </div>
-              <div class='progress-item'>
+              <div class="progress-item">
                 <span>发布系统</span>
-                <el-progress :percentage="100"></el-progress>
+                <el-progress :percentage="100"/>
               </div>
-              <div class='progress-item'>
+              <div class="progress-item">
                 <span>cmdb</span>
-                <el-progress :percentage="100"></el-progress>
+                <el-progress :percentage="100"/>
               </div>
-              <div class='progress-item'>
-                <span>研发管理</span>
-                <el-progress :percentage="100"></el-progress>
-              </div>
-              <div class='progress-item'>
-                <span>运维管理</span>
-                <el-progress :percentage="100"></el-progress>
-              </div>
-              <div class='progress-item'>
-                <span>考勤管理</span>
-                <el-progress :percentage="100"></el-progress>
+              <div class="progress-item">
+                <span>salt管理</span>
+                <el-progress :percentage="100"/>
               </div>
             </el-card>
             <el-card class="box-card-card">
-              <div slot="header" class="clearfix">
+              <div
+                slot="header"
+                class="clearfix">
                 <span>待开发功能</span>
               </div>
-              <div class='progress-item'>
+              <div class="progress-item">
                 <span>dns管理</span>
-                <el-progress :percentage="0"></el-progress>
+                <el-progress :percentage="0"/>
               </div>
-              <div class='progress-item'>
+              <div class="progress-item">
                 <span>zabbix管理</span>
-                <el-progress :percentage="0"></el-progress>
+                <el-progress :percentage="0"/>
               </div>
             </el-card>
           </div>
@@ -71,33 +75,77 @@
       <el-col :span="18">
         <el-card>
           <div>
-            <p style="font-size: 24px">欢迎你，{{username}}!</p>
+            <p style="font-size: 24px">欢迎你，{{ username }}!</p>
             <p style="font-size: 18px">&#160;&#160;&#160;&#160;&#160;&#160;本系统目的是为了简化和改进目前日常工作中的一些重复和琐碎的事情，希望此系统能给大家带来方便和快捷！本系统还有很多功能和地方需要完善，希望大家多提提意见。</p>
           </div>
         </el-card>
         <el-card class="duty">
           <el-tabs v-model="activeName">
-            <el-tab-pane label="运维值班表" name="opsduty">
-              <calendar :addbtn="role==='super'"></calendar>
+            <el-tab-pane
+              label="运维值班表"
+              name="opsduty">
+              <calendar :addbtn="role==='admin'"/>
             </el-tab-pane>
-            <el-tab-pane label="技术值班表" name="techduty">
+            <el-tab-pane
+              label="技术值班表"
+              name="techduty">
               <h3 class="title">基础架构</h3>
-              <el-table :data="opsdutyData" border style="width: 100%">
-                <el-table-column prop="duty" label="职责" :width="150"></el-table-column>
-                <el-table-column prop="master" label="主负责人" :width="80"></el-table-column>
-                <el-table-column prop="m_tel" label="电话" :width="120"></el-table-column>
-                <el-table-column prop="slave" label="备负责人" :width="80"></el-table-column>
-                <el-table-column prop="s_tel" label="电话" :width="120"></el-table-column>
-                <el-table-column prop="desc" label="说明"></el-table-column>
+              <el-table
+                :data="opsdutyData"
+                border
+                style="width: 100%">
+                <el-table-column
+                  :width="150"
+                  prop="duty"
+                  label="职责"/>
+                <el-table-column
+                  :width="80"
+                  prop="master"
+                  label="主负责人"/>
+                <el-table-column
+                  :width="120"
+                  prop="m_tel"
+                  label="电话"/>
+                <el-table-column
+                  :width="80"
+                  prop="slave"
+                  label="备负责人"/>
+                <el-table-column
+                  :width="120"
+                  prop="s_tel"
+                  label="电话"/>
+                <el-table-column
+                  prop="desc"
+                  label="说明"/>
               </el-table>
               <h3 class="title">应用系统</h3>
-              <el-table :data="techdutyData" border style="width: 100%">
-                <el-table-column prop="duty" label="职责" :width="150"></el-table-column>
-                <el-table-column prop="master" label="主负责人" :width="80"></el-table-column>
-                <el-table-column prop="m_tel" label="电话" :width="120"></el-table-column>
-                <el-table-column prop="slave" label="备负责人" :width="80"></el-table-column>
-                <el-table-column prop="s_tel" label="电话" :width="120"></el-table-column>
-                <el-table-column prop="desc" label="说明"></el-table-column>
+              <el-table
+                :data="techdutyData"
+                border
+                style="width: 100%">
+                <el-table-column
+                  :width="150"
+                  prop="duty"
+                  label="职责"/>
+                <el-table-column
+                  :width="80"
+                  prop="master"
+                  label="主负责人"/>
+                <el-table-column
+                  :width="120"
+                  prop="m_tel"
+                  label="电话"/>
+                <el-table-column
+                  :width="80"
+                  prop="slave"
+                  label="备负责人"/>
+                <el-table-column
+                  :width="120"
+                  prop="s_tel"
+                  label="电话"/>
+                <el-table-column
+                  prop="desc"
+                  label="说明"/>
               </el-table>
               <div>
                 <p class="tips"> 1. 以上仅限在0点至8点时间内，影响范围广且急迫性高的问题处理</p>
@@ -113,7 +161,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import {mapGetters} from 'vuex'
 import PanThumb from '@/components/PanThumb'
 import Calendar from './components/calendar.vue'
 import Mallki from '@/components/TextHoverEffect/Mallki'

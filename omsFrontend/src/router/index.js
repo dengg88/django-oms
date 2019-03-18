@@ -59,6 +59,7 @@ export const baseRouterMap = [
     hidden: true
   },
   {
+    name: '首页',
     path: '',
     component: Layout,
     redirect: 'dashboard',
@@ -66,6 +67,7 @@ export const baseRouterMap = [
       {
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
+        name: '首页',
         meta: {title: 'dashboard', icon: 'home', noCache: true, affix: true}
       }
     ]
@@ -79,37 +81,16 @@ export default new Router({
 })
 
 /* Router Modules */
+import usermanagerRouter from './modules/usermanager'
+import permmanagerRouter from './modules/permmanager'
 import workticketRouter from './modules/workticket'
-import deployjobRouter from './modules/deployjobs'
+import deployjobRouter from './modules/deployjob'
 
 export const asyncRouterMap = [
+  usermanagerRouter,
+  permmanagerRouter,
   workticketRouter,
   deployjobRouter
-  // {
-  //   title: '用户管理',
-  //   path: '/users',
-  //   component: Layout,
-  //   icon: 'user',
-  //   redirect: 'users',
-  //   children: [
-  //     { path: 'users', component: () => import(('@/views/users/users')), title: '用户列表' },
-  //     { path: 'usergroups', component: () => import(('@/views/users/usergroups')), title: '用户组列表' },
-  //     { path: 'roles', component: () => import(('@/views/users/roles')), title: '角色列表' }
-  //   ]
-  // },
-  // {
-  //   title: '权限管理',
-  //   path: '/perms',
-  //   component: Layout,
-  //   icon: 'fire',
-  //   redirect: 'menuperm',
-  //   children: [
-  //     { path: 'menus', component: () => import(('@/views/perms/menus')), title: '菜单列表' },
-  //     { path: 'menuperm', component: () => import(('@/views/perms/menuperm')), title: '用户菜单权限' },
-  //     { path: 'hostperm', component: () => import(('@/views/perms/hostperm')), title: '用户主机权限' },
-  //     { path: 'wikiperm', component: () => import(('@/views/perms/wikiperm')), title: '用户文档权限' }
-  //   ]
-  // },
   // {
   //   title: 'salt管理',
   //   path: '/salts',

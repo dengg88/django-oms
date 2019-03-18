@@ -51,7 +51,6 @@
   export default {
     name: 'SidebarItem',
     components: {Item, AppLink},
-    mixins: [FixiOSBug],
     props: {
       // route object
       item: {
