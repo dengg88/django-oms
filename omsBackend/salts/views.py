@@ -4,14 +4,27 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from omsBackend.settings import sapi
-from salts.models import SaltState, StateJob, SaltStateGroup
-from salts.serializers import SaltStateSerializer, StateJobSerializer, SaltStateGroupSerializer
+from salts.models import SaltState, StateJob, SaltStateGroup, SaltServer
+from salts.serializers import SaltStateSerializer, StateJobSerializer, SaltStateGroupSerializer, SaltServerSerializer
 from hosts.models import Host
 from records.models import Record
 import json_tools
 from utils.tools import removeNone
 from rest_framework import viewsets
 import json
+
+
+class SaltStateViewSet(viewsets.ModelViewSet):
+    queryset = SaltState.objects.all()
+    serializer_class = SaltStateSerializer
+    filter_fields = ['name', 'group__name']
+
+
+class SaltServerViewSet(viewsets.ModelViewSet):
+    queryset = SaltServer.objects.all()
+    serializer_class = SaltServerSerializer
+    filter_fields = ['name']
+
 
 @api_view()
 def get_all_key(request):
@@ -106,12 +119,6 @@ def sync_remote_server(request, method):
     print("no_update_list: %s" % no_update_list)
 
     return Response({"results": data, "count": count})
-
-
-class SaltStateViewSet(viewsets.ModelViewSet):
-    queryset = SaltState.objects.all()
-    serializer_class = SaltStateSerializer
-    filter_fields = ['name', 'group__name']
 
 
 @api_view()

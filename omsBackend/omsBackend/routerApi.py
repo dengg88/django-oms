@@ -64,6 +64,13 @@ from records.views import RecordViewSet
 
 router.register(r'records', RecordViewSet)
 
+from salts.views import SaltStateViewSet, StateJobViewSet, SaltStateGroupViewSet, SaltServerViewSet
+
+router.register(r'saltstates', SaltStateViewSet)
+router.register(r'saltstategroups', SaltStateGroupViewSet)
+router.register(r'saltjobs', StateJobViewSet)
+router.register(r'saltservers', SaltServerViewSet)
+
 # from projects.views import ProjectViewSet, ProjectCommentViewSet, ProjectEnclosureViewSet, ProjectTypeViewSet, \
 #     BugManagerViewSet, TestManagerViewSet, DemandManagerViewSet, DemandEnclosureViewSet, ProjectCompleteViewSet
 #
@@ -102,14 +109,8 @@ router.register(r'records', RecordViewSet)
 # router.register(r'zkpunchs', PunchViewSet)
 # router.register(r'zkpunchset', PunchSetViewSet)
 
-from zbmanager.views import ZbHostViewSet, ZbHostGroupViewSet, ZbTemplateViewSet
-
-router.register(r'zbhosts', ZbHostViewSet, base_name='zbhosts')
-router.register(r'zbhostgroups', ZbHostGroupViewSet, base_name='zbhostgroups')
-router.register(r'zbtemplates', ZbTemplateViewSet, base_name='zbtemplates')
-
-from salts.views import SaltStateViewSet, StateJobViewSet, SaltStateGroupViewSet
-
-router.register(r'saltstates', SaltStateViewSet)
-router.register(r'saltstategroups', SaltStateGroupViewSet)
-router.register(r'saltjobs', StateJobViewSet)
+# from zbmanager.views import ZbHostViewSet, ZbHostGroupViewSet, ZbTemplateViewSet
+#
+# router.register(r'zbhosts', ZbHostViewSet, base_name='zbhosts')
+# router.register(r'zbhostgroups', ZbHostGroupViewSet, base_name='zbhostgroups')
+# router.register(r'zbtemplates', ZbTemplateViewSet, base_name='zbtemplates')

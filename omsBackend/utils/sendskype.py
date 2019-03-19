@@ -9,10 +9,10 @@ from skpy import Skype
 
 SK_ACOUNT = {
     'sk_user': 'itimor@126.com',
-    'sk_pass': 'jay541430183'
+    'sk_pass': 'xx'
 }
-SK = Skype(SK_ACOUNT["sk_user"], SK_ACOUNT["sk_pass"])
-#SK = 'sk'
+#SK = Skype(SK_ACOUNT["sk_user"], SK_ACOUNT["sk_pass"])
+SK = 'sk'
 
 
 def skype_bot(user, content):

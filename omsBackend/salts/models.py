@@ -54,3 +54,18 @@ class StateJob(models.Model):
     class Meta:
         verbose_name = u'执行state'
         verbose_name_plural = u'执行state'
+
+
+class SaltServer(models.Model):
+    name = models.CharField(max_length=64, unique=True, verbose_name=u'名称')
+    apiurl = models.CharField(max_length=64, verbose_name=u'api地址')
+    user = models.CharField(max_length=64, verbose_name=u'用户名')
+    password = models.CharField(max_length=64, verbose_name=u'密码')
+    desc = models.TextField(null=True, blank=True, verbose_name=u'备注')
+
+    def __str__(self):
+        return self.apiurl
+
+    class Meta:
+        verbose_name = 'salt server'
+        verbose_name_plural = 'salt server'

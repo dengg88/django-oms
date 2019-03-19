@@ -2,7 +2,7 @@
 # author: itimor
 
 from rest_framework import serializers
-from salts.models import SaltState, StateJob, SaltStateGroup
+from salts.models import SaltState, StateJob, SaltStateGroup, SaltServer
 from users.models import User
 from omsBackend.settings import sapi
 
@@ -37,3 +37,9 @@ class StateJobSerializer(serializers.ModelSerializer):
         job = StateJob.objects.create(**validated_data)
         job.save()
         return job
+
+
+class SaltServerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SaltServer
+        fields = ['url', 'id', 'name', 'apiurl', 'user', 'password', 'desc']

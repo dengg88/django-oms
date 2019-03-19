@@ -250,3 +250,28 @@ code {
   font-size: 18px;
   vertical-align: middle;
 }
+
+.runlog {
+  padding: 0 20px;
+  background-color: #000;
+  border: 1px solid rgba(0, 255, 0, 0.41);
+  border-radius: 5px;
+  color: #00ff00;
+  .host {
+    color: #fa11ff;
+    font-size: 18px;
+  }
+}
+
+.table-expand {
+  font-size: 0;
+  .el-form-item {
+    margin-right: 0 !important;
+    margin-bottom: 0;
+    width: 50% !important;
+    .el-form-item__label {
+      width: 120px;
+      color: #99a9bf;
+    }
+  }
+}

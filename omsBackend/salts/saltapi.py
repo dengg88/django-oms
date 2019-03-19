@@ -3,6 +3,9 @@
 
 import requests
 import datetime
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 class SaltAPI(object):

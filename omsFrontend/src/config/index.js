@@ -110,7 +110,6 @@ module.exports = {
     ticketcomments: '/api/ticketcomments/',
     ticketenclosures: '/api/ticketenclosures/',
     tickettypes: '/api/tickettypes/',
-    records: '/api/records/',
 
     // 权限
     usermenuperms: '/api/usermenuperms/',
@@ -148,6 +147,7 @@ module.exports = {
     sqltickets: '/api/sqltickets/',
 
     // salt
+    saltservers: '/api/saltservers/',
     saltstates: '/api/saltstates/',
     saltstategroups: '/api/saltstategroups/',
     saltjobs: '/api/saltjobs/',
@@ -155,6 +155,11 @@ module.exports = {
     get_cmd_result: '/api/salts/get_cmd_result/',
     update_states_status: '/api/update_states_status/',
     get_state_bygroup: '/api/get_state_bygroup/',
-    sync_remote_server: '/api/salts/sync_remote_server/'
+    sync_remote_server: '/api/salts/sync_remote_server/',
+
+    // 主机
+    hosts: '/api/hosts/',
+    idcs: '/api/idcs/',
+    records: '/api/records/',
   }
 }

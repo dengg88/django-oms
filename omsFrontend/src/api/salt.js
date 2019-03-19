@@ -122,3 +122,35 @@ export function getStatesStatusBygroup(query) {
     params: query
   })
 }
+
+// saltservers
+export function postSaltServer(data) {
+  return request({
+    url: apiuri.saltservers,
+    method: 'post',
+    data
+  })
+}
+
+export function getSaltServer(query, id) {
+  return request({
+    url: id ? apiuri.saltservers + id + '/' : apiuri.saltservers,
+    method: 'get',
+    params: query
+  })
+}
+
+export function putSaltServer(id, data) {
+  return request({
+    url: apiuri.saltservers + id + '/',
+    method: 'put',
+    data
+  })
+}
+
+export function deleteSaltServer(id) {
+  return request({
+    url: apiuri.saltservers + id + '/',
+    method: 'delete'
+  })
+}

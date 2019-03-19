@@ -67,17 +67,20 @@ CACHES = {
 
 # saltapi
 salt_info = {
-    "url": "http://127.0.0.1:8888",
+    "url": "https://1.1.1.11:8888",
     "username": "saltapi",
     "password": "123456"
 }
 
 from salts.saltapi import SaltAPI
 
-try:
-    sapi = SaltAPI(url=salt_info["url"], username=salt_info["username"], password=salt_info["password"])
-except:
-    sapi = 'sapi'
+sapi = SaltAPI(url=salt_info["url"], username=salt_info["username"], password=salt_info["password"])
+
+# try:
+#     sapi = SaltAPI(url=salt_info["url"], username=salt_info["username"], password=salt_info["password"])
+# except Exception as e:
+#     print(e)
+#     sapi = 'sapi'
 
 from zbmanager.zabbix_api import ZabbixApi
 
