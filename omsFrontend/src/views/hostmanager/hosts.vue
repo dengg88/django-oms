@@ -11,6 +11,7 @@
             </el-button>
           </el-button-group>
           <el-radio-group v-model="listQuery.status" @change="changeStatus" style="margin-left: 20px">
+            <el-radio label="">全部</el-radio>
             <el-radio label="noused">未使用</el-radio>
             <el-radio label="used">使用中</el-radio>
             <el-radio label="broken">故障</el-radio>
@@ -138,7 +139,7 @@ export default {
         limit: LIMIT,
         offset: '',
         search: '',
-        status: 'used'
+        status: ''
       },
       pagesize: pagesize,
       pageformat: pageformat,
