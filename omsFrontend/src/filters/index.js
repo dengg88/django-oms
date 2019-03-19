@@ -40,3 +40,17 @@ export function numberFormatter(num, digits) {
 export function toThousandFilter(num) {
   return (+num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
 }
+
+export function parseDate(datestr) {
+  if (datestr !== undefined) {
+    const date = datestr.slice(0, 10)
+    const time = datestr.slice(11, 19)
+    return date + ' ' + time
+  }
+}
+
+export function diffDate(date) {
+  const d1 = new Date()
+  const d2 = new Date(date)
+  return Math.round(parseInt(d2 - d1) / 1000 / 60 / 60 / 24)
+}
