@@ -8,7 +8,6 @@
           <el-button
             type="primary"
             icon="el-icon-plus"
-            disabled
             @click="addForm=true">新建
           </el-button>
         </div>

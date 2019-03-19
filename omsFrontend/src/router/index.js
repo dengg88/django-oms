@@ -59,7 +59,6 @@ export const baseRouterMap = [
     hidden: true
   },
   {
-    name: '首页',
     path: '',
     component: Layout,
     redirect: 'dashboard',
@@ -82,49 +81,36 @@ export default new Router({
 
 /* Router Modules */
 import usermanagerRouter from './modules/usermanager'
+import wikimanagerRouter from './modules/wikimanager'
 import permmanagerRouter from './modules/permmanager'
 import workticketRouter from './modules/workticket'
-import deployjobRouter from './modules/deployjob'
+import deploymanagerRouter from './modules/deploymanager'
+import saltmanagerRouter from './modules/saltmanager'
+import hostmanagerRouter from './modules/hostmanager'
 
 export const asyncRouterMap = [
   usermanagerRouter,
+  wikimanagerRouter,
   permmanagerRouter,
   workticketRouter,
-  deployjobRouter
-  // {
-  //   title: 'salt管理',
-  //   path: '/salts',
-  //   component: Layout,
-  //   icon: 'cube',
-  //   redirect: 'cmdrun',
-  //   children: [
-  //     { path: 'index', component: () => import(('@/views/salts/index')), title: 'state管理' },
-  //     { path: 'runstate', component: () => import(('@/views/salts/runstate')), title: '执行state' },
-  //     { path: 'cmdrun', component: () => import(('@/views/salts/cmdrun')), title: '执行命令' }
-  //   ]
-  // },
-  // {
-  //   title: '主机管理',
-  //   path: '/hosts',
-  //   component: Layout,
-  //   icon: 'desktop',
-  //   redirect: 'hosts',
-  //   children: [
-  //     { path: 'hosts', component: () => import(('@/views/hosts/hosts')), title: '主机列表' },
-  //     { path: 'assetrecords', component: () => import(('@/views/hosts/assetrecords')), title: '资产修改记录' },
-  //     { path: 'idcs', component: () => import(('@/views/hosts/idcs')), title: '机房列表' }
-  //   ]
-  // },
-  // {
-  //   title: '工具管理',
-  //   path: '/tools',
-  //   component: Layout,
-  //   icon: 'cogs',
-  //   redirect: 'upload',
-  //   children: [
-  //     { path: 'upload', component: () => import(('@/views/tools/upload')), title: '上传列表' }
-  //   ]
-  // }
+  deploymanagerRouter,
+  saltmanagerRouter,
+  hostmanagerRouter,
+  {
+    name: '工具管理',
+    path: '/toolmanager',
+    component: Layout,
+    redirect: 'upload',
+    meta: {title: 'toolmanager', icon: 'cogs'},
+    children: [
+      {
+        path: 'upload',
+        component: () => import(('@/views/toolmanager/upload')),
+        name: '上传列表',
+        meta: {title: 'upload'}
+      }
+    ]
+  }
 ]
 
 export const errorRouterMap = [

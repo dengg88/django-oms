@@ -13,7 +13,7 @@ module.exports = {
   pagesize: [10, 20, 50, 100],
   pageformat: 'total, prev, pager, next, sizes',
 
-  // env
+  // cdenv
   dev: {
     // Paths
     assetsSubDirectory: 'static',

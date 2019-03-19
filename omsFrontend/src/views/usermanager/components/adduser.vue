@@ -34,10 +34,7 @@
     <el-form-item
       label="是否激活"
       prop="is_active">
-      <el-switch
-        v-model="ruleForm.is_active"
-        on-text="oo"
-        off-text="xx"/>
+      <el-switch v-model="ruleForm.is_active"/>
     </el-form-item>
     <el-form-item
       label="角色"
@@ -136,12 +133,13 @@ export default {
     },
     getGroups() {
       getGroup().then(response => {
-        this.groups = response.data.results
+        console.log(response)
+        this.groups = response.data
       })
     },
     getRoles() {
       getRole().then(response => {
-        this.roles = response.data.results
+        this.roles = response.data
       })
     },
     setPasswd() {

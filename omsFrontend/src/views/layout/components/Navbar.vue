@@ -15,12 +15,6 @@
 
         <lang-select class="right-menu-item hover-effect"/>
 
-        <el-tooltip
-          :content="$t('navbar.theme')"
-          effect="dark"
-          placement="bottom">
-          <theme-picker class="right-menu-item hover-effect"/>
-        </el-tooltip>
       </template>
 
       <el-dropdown
@@ -40,7 +34,7 @@
           </router-link>
           <a
             target="_blank"
-            href="https://github.com/PanJiaChen/vue-element-admin/">
+            href="https://github.com/itimor/django-oms/">
             <el-dropdown-item>
               {{ $t('navbar.github') }}
             </el-dropdown-item>
@@ -63,7 +57,6 @@
   import Screenfull from '@/components/Screenfull'
   import SizeSelect from '@/components/SizeSelect'
   import LangSelect from '@/components/LangSelect'
-  import ThemePicker from '@/components/ThemePicker'
   import Search from '@/components/HeaderSearch'
 
   export default {
@@ -73,7 +66,6 @@
       Screenfull,
       SizeSelect,
       LangSelect,
-      ThemePicker,
       Search
     },
     computed: {

@@ -42,7 +42,6 @@
               <el-button
                 type="danger"
                 size="small"
-                disabled
                 @click="deleteGroup(scope.row.id)">删除</el-button>
             </template>
           </el-table-column>
