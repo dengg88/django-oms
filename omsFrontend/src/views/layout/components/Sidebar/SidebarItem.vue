@@ -46,7 +46,6 @@
   import {isExternal} from '@/utils/validate'
   import Item from './Item'
   import AppLink from './Link'
-  import FixiOSBug from './FixiOSBug'
 
   export default {
     name: 'SidebarItem',
@@ -108,3 +107,9 @@
     }
   }
 </script>
+
+<style lang="scss" >
+  .side-icon {
+    min-width: 20px;
+  }
+</style>

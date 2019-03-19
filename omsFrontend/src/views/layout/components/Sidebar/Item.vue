@@ -17,7 +17,7 @@ export default {
     const vnodes = []
 
     if (icon) {
-      vnodes.push(<icon name={icon}/>)
+      vnodes.push(<icon class='side-icon' name={icon}/>)
     }
 
     if (title) {
