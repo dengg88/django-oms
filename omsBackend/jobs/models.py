@@ -106,7 +106,7 @@ class Deploycmd(models.Model):
 class DeployJobs(models.Model):
     job = models.ForeignKey(Jobs, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=u'发布任务', related_name='deploy_job')
     j_id = models.CharField(max_length=100, null=True, blank=True, verbose_name=u'任务ID')
-    deploy_status = models.CharField(choices=DEPLOY_STATUS.items(), default="deploy", max_length=10,
+    deploy_status = models.CharField(choices=tuple(DEPLOY_STATUS.items()), default="deploy", max_length=10,
                                      verbose_name=u'发布状态')
     deploy_hosts = models.CharField(max_length=100, null=True, blank=True, verbose_name=u'发布主机')
     deploy_cmd_host = models.CharField(max_length=100, default='null', verbose_name=u'命令目标主机')
@@ -149,7 +149,7 @@ class DeployTicket(models.Model):
     content = models.TextField(verbose_name=u'上线内容')
     desc = models.TextField(null=True, blank=True, verbose_name=u'发布说明')
     create_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='deployticket_create_user', verbose_name=u'创建者')
-    status = models.CharField(max_length=3, choices=Status.items(), default=0, verbose_name=u'状态')
+    status = models.CharField(max_length=3, choices=tuple(Status.items()), default=0, verbose_name=u'状态')
     skype_to = models.CharField(max_length=100, null=True, blank=True, verbose_name=u'通知人')
     create_time = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
 
@@ -183,7 +183,7 @@ class SqlTicket(models.Model):
     dbname = models.CharField(max_length=100, verbose_name=u'db')
     content = models.TextField(verbose_name=u'sql语句')
     desc = models.TextField(verbose_name=u'说明')
-    status = models.CharField(max_length=3, choices=SqlStatus.items(), default=0, verbose_name=u'状态')
+    status = models.CharField(max_length=3, choices=tuple(SqlStatus.items()), default=0, verbose_name=u'状态')
     create_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='sqlticket_create_user', verbose_name=u'创建者')
     action_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='sqlticket_action_user', verbose_name=u'执行者')
     env = models.CharField(max_length=100, null=True, blank=True, verbose_name=u'执行环境')
