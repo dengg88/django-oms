@@ -3,7 +3,7 @@
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from omsBackend.settings import sapi
+# from omsBackend.settings import sapi
 from salts.models import SaltState, StateJob, SaltStateGroup, SaltServer
 from salts.serializers import SaltStateSerializer, StateJobSerializer, SaltStateGroupSerializer, SaltServerSerializer
 from hosts.models import Host

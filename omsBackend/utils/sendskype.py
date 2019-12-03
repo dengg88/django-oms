@@ -2,7 +2,7 @@
 # author: itimor
 
 # 登录skype
-from skpy import Skype
+# from skpy import Skype
 
 # skype账号//
 

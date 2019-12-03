@@ -4,7 +4,7 @@
 from rest_framework import serializers
 from salts.models import SaltState, StateJob, SaltStateGroup, SaltServer
 from users.models import User
-from omsBackend.settings import sapi
+# from omsBackend.settings import sapi
 
 
 class SaltStateSerializer(serializers.ModelSerializer):

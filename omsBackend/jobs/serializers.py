@@ -6,7 +6,7 @@ from jobs.models import Jobs, Deployenv, Deploycmd, DeployJobs, DeployTicket, De
 from hosts.models import Host
 from users.models import User
 from tools.models import Upload
-from omsBackend.settings import sapi
+# from omsBackend.settings import sapi
 
 
 class JobsSerializer(serializers.ModelSerializer):
